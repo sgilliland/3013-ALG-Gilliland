@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                   
-// Author:           Terry Griffin & Sarah Gilliland
+// Author:           Sarah Gilliland
 // Email:            sarah13grace@gmail.com
-// Label:            A04
-// Title:            Linked List Class
+// Label:            Assignment 2
+// Title:            Commenting C++ Code
 // Course:           CMPS 3013
 // Semester:         Spring 2020
 //
@@ -11,19 +11,14 @@
 //       This program implements a class that allows a linked list to be used just like 
 //       an array. It overloads the "[]" (square brackets) to simulate accessing seperate 
 //       array elements, but really it traverses the list to find the specified node using
-//       an index value. It also overloads the "+" and "-" signs allowing a user to "add"
-//       or "push" items onto the end of the list, as well as "pop" items off the end of our 
-//       array. This class is not meant to replace the STL vector library, its simply a project
-//       to introduce the beginnings of creating complex / abstract data types. 
+//       an index value. It also overloads the "+" sign, allowing a user to "add" or "push"
+//       items onto the end of the list.
 //       
 // Usage: 
-//      - $ ./main filename
-//      - This will read in a file containing whatever values to be read into our list/array. 
+//      - None
 //      
 // Files:            
-//      main.cpp    : driver program 
-//      list.h      : header file with list defintion
-//      list.cpp    : list implementation
+//      main.cpp    : driver program
 /////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -31,7 +26,7 @@
 
 using namespace std;
 
-int A[100];                             // Global array of integers with size 100
+int A[100];                                 // Global array of integers with size 100
 
 /**
  * Struct
@@ -47,25 +42,25 @@ int A[100];                             // Global array of integers with size 10
  * 
  * Usage: 
  * 
- *      Node *Head;                     // Create Instance of Node
+ *      Node *Head;                         // Create Instance of Node
  *                                                  
- *      Node *Temp = new Node(val);     // Dynamically Allocating a Node that holds a value
+ *      Node *Temp = new Node(val);         // Dynamically Allocating a Node that holds a value
  * 
- *      Node();                         // Construct Default Node        
+ *      Node();                             // Construct Default Node        
  *      
  */
 struct Node
 {
-    int x;                              // the value to be held by the node
-    Node *next;                         // the pointer that points to the next node
-    Node()                              // default constructor
+    int x;                                  // The value to be held by the node
+    Node *next;                             // The pointer that points to the next node
+    Node()                                  // Default constructor
     {
-        x = -1;                         // has node hold -1 until given a new value
-        next = NULL;                    // this is the last node so it points to NULL
+        x = -1;                             // Has node hold -1 until given a new value
+        next = NULL;                        // This is the last node so it points to NULL
     }
-    Node(int n)                         // parameterized constructor
+    Node(int n)                             // Parameterized constructor
     {
-        x = n;                          // gives the node a specific value, n, to hold
+        x = n;                              // Gives the node a specific value, n, to hold
         next = NULL;
     }
 };
@@ -95,177 +90,177 @@ struct Node
  * 
  * Usage: 
  * 
- *      List L1;                        // Create Instance of List
+ *      List L1;                            // Create Instance of List
  *                                                  
- *      L1.Push(i);                     // Push the value in the parameter to the list
+ *      L1.Push(i);                         // Push the value in the parameter to the list
  * 
- *      L1.PrintTail();                 // Print the last value in the list 
+ *      L1.PrintTail();                     // Print the last value in the list 
  *      
- *      List L3 = L1 + L2;              // + and = are overloaded to combine two separate lists
+ *      List L3 = L1 + L2;                  // + is overloaded to combine two separate lists
  * 
- *      cout << L3 << endl;             // << is overloaded to print the list with the Print() method
+ *      cout << L3 << endl;                 // << is overloaded to print the list with the Print() method
  * 
- *      os << L.Print();                // Print a string containing the value from each node of the list
+ *      os << L.Print();                    // Print a string containing the value from each node of the list
  * 
- *      cout << L3[5] << endl;          // [] is overloaded to give only the value from a specific node
+ *      cout << L3[5] << endl;              // [] is overloaded to give only the value from a specific node
  *      
  */
 class List
 {
 private:
-    Node *Head;                         // Pointer to beginning of List
-    Node *Tail;                         // Pointer to end of List
-    int Size;                           // Size of List
+    Node *Head;                             // Pointer to beginning of List
+    Node *Tail;                             // Pointer to end of List
+    int Size;                               // Size of List
 
 public:
     List()
     {
-        Head = Tail = NULL;             // Default empty list
+        Head = Tail = NULL;                 // Default empty list
         Size = 0;
     }
 
     void Push(int val)
     {
-        Node *Temp = new Node(val);     // Allocate new memory and initialize node
+        Node *Temp = new Node(val);         // Allocate new memory and initialize node
 
-        if (!Head && !Tail)             // List is empty
+        if (!Head && !Tail)                 // List is empty
         {
-            Head = Tail = Temp;         // Set head and tail to point to the new node
+            Head = Tail = Temp;             // Set head and tail to point to the new node
         }
-        else                            // List is not empty
+        else                                // List is not empty
         {
-            Tail->next = Temp;          // Make previous node point to the new node
-            Tail = Temp;                // Make tail point to the new node
+            Tail->next = Temp;              // Make previous node point to the new node
+            Tail = Temp;                    // Make tail point to the new node
         }
-        Size++;                         // Increment size
+        Size++;                             // Increment size
     }
 
     void Insert(int val)
     {
         
-        Node *Temp = new Node(val);     // Allocate new memory and initialize node
+        Node *Temp = new Node(val);         // Allocate new memory and initialize node
 
         Temp->next = Head;
         Head = Temp;
-        if (!Tail)                      // Tail was pointing to NULL
+        if (!Tail)                          // Tail was pointing to NULL
         {
-            Tail = Head;                // Tail points to what Head points to
+            Tail = Head;                    // Tail points to what Head points to
         }
-        Size++;                         // Increment size
+        Size++;                             // Increment size
     }
 
     void PrintTail()
     {
-        cout << Tail->x << endl;        // Print the value of the last node
+        cout << Tail->x << endl;            // Print the value of the last node
     }
     
     string Print()
     {
-        Node *Temp = Head;              // Get a reference to beginning of local list
-        string list;                    // String which will hold all values from List
+        Node *Temp = Head;                  // Get a reference to beginning of local list
+        string list;                        // String which will hold all values from List
 
-        while (Temp != NULL)            // List is not empty
-        {                               // All values from the list are added to the string
-                                        // and separated by arrows
+        while (Temp != NULL)                // List is not empty
+        {                                   // All values from the list are added to the string
+                                            // and separated by arrows
             list += to_string(Temp->x) + "->";
             Temp = Temp->next;          
         }
 
-        return list;                    // Return the new string of the values from List
+        return list;                        // Return the new string of the values from List
     }
 
     // not implemented
     int Pop()
     {
-        Size--;                         // Decrement size
+        Size--;                             // Decrement size
         return 0;
     }
 
     List operator+(const List &Rhs)
     {
         
-        List NewList;                   // Create a new list that will contain both when done
+        List NewList;                       // Create a new list that will contain both when done
 
         
-        Node *Temp = Head;              // Get a reference to beginning of local list
+        Node *Temp = Head;                  // Get a reference to beginning of local list
 
         
-        while (Temp != NULL)            // Loop through local list and Push values onto new list
+        while (Temp != NULL)                // Loop through local list and Push values onto new list
         {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
 
 
-        Temp = Rhs.Head;                // Get a reference to head of Rhs
+        Temp = Rhs.Head;                    // Get a reference to head of Rhs
 
 
-        while (Temp != NULL)            // Same as above, loop and push
+        while (Temp != NULL)                // Same as above, loop and push
         {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
 
 
-        return NewList;                 // Return new concatenated version of lists
+        return NewList;                     // Return new concatenated version of lists
     }
 
-                                        // Implementation of [] operator.  This function returns an
-                                        // int value as if the list were an array.
+                                            // Implementation of [] operator.  This function returns an
+                                            // int value as if the list were an array.
     int operator[](int index)
     {
-        Node *Temp = Head;              // Get a reference to beginning of local list
+        Node *Temp = Head;                  // Get a reference to beginning of local list
 
 
-        if (index >= Size)              // If index is out of bounds, display an error message
+        if (index >= Size)                  // If index is out of bounds, display an error message
         {
             cout << "Index out of bounds, exiting";
             exit(0);
         }
-        else                            // Index is within bounds
+        else                                // Index is within bounds
         {
 
             for (int i = 0; i < index; i++)
             {
-                Temp = Temp->next;      // Make temp point to the correct index
+                Temp = Temp->next;          // Make temp point to the correct index
             }
-            return Temp->x;             // Return the value help by the node in the location of index
+            return Temp->x;                 // Return the value help by the node in the location of index
         }
     }
 
     friend ostream &operator<<(ostream &os, List L)
     {
-        os << L.Print();                // Calls the Print() method to print all values in the list
+        os << L.Print();                    // Calls the Print() method to print all values in the list
         return os;
     }
 };
 
 int main(int argc, char **argv)
 {
-    List L1;                            // First list object
-    List L2;                            // Second list object
+    List L1;                                // First list object
+    List L2;                                // Second list object
 
-    for (int i = 0; i < 25; i++)        // Loop where i has the values 0 through 24
+    for (int i = 0; i < 25; i++)            // Loop where i has the values 0 through 24
     {
-        L1.Push(i);                     // Pushes the value of i to the first list
+        L1.Push(i);                         // Pushes the value of i to the first list
     }
 
-    for (int i = 50; i < 100; i++)      // Loop where i has the values 50 through 99
+    for (int i = 50; i < 100; i++)          // Loop where i has the values 50 through 99
     {
-        L2.Push(i);                     // Pushes the new value of i to the second list
+        L2.Push(i);                         // Pushes the new value of i to the second list
     }
 
     //cout << L1 << endl;
-    L1.PrintTail();                     // Prints the last node of the first list
-    L2.PrintTail();                     // Prints the last node of the second list
+    L1.PrintTail();                         // Prints the last node of the first list
+    L2.PrintTail();                         // Prints the last node of the second list
 
-    List L3 = L1 + L2;                  // Uses overloaded operators to combine the first
-                                        // and second list and saves as a third list
+    List L3 = L1 + L2;                      // Uses overloaded operators to combine the first
+                                            // and second list and saves as a third list
     
-    cout << L3 << endl;                 // Uses overloaded operators to print all values
-                                        // of the third list to the screen
+    cout << L3 << endl;                     // Uses overloaded operators to print all values
+                                            // of the third list to the screen
 
-    cout << L3[5] << endl;              // Uses overloaded operators to print
-                                        // only the 5th node's value from the third list
+    cout << L3[5] << endl;                  // Uses overloaded operators to print
+                                            // only the 5th node's value from the third list
     return 0;
 }
