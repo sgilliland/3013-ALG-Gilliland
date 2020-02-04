@@ -33,7 +33,8 @@ class ArrayStack{
 private:
   int *A;           // pointer to array of int's
   int size;         // current max stack size
-  int top;          // top of stack 
+  int top;          // top of stack
+  int numResize;    // times stack is resized
 
 public:
  /**
@@ -52,6 +53,7 @@ public:
     size = 10;
     A = new int[size];
     top = -1;
+    numResize = 0;
   }
 
  /**
@@ -70,6 +72,22 @@ public:
     size = s;
     A = new int[s];
     top = -1;
+    numResize = 0;
+  }
+ /**
+  * Public int: getNumResize
+  * 
+  * Description:
+  *      Getter for int numResize
+  * 
+  * Params:
+  *      NULL
+  * 
+  * Returns:
+  *      numResize
+  */
+  int getNumResize(){
+    return numResize;
   }
 
  /**
