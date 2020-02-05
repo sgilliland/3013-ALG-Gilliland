@@ -17,8 +17,6 @@
 #include <iostream>
 #include <fstream>
 
-void Print(ofstream&, ArrayStack);
-
 using namespace std;
 
 /**
@@ -317,6 +315,8 @@ public:
   }
 
 };
+
+void Print(ofstream& outfile, ArrayStack stack);
 
 // MAIN DRIVER
 // Simple Array Based Stack Usage:
