@@ -9,7 +9,9 @@
 // Semester:         Spring 2020
 //
 // Description:
-//       Overview of a class implementing an array based stack
+//      Resizing an array based stack so that if the stack gets full, it
+//      is doubled in capacity and if it gets halfway empty, it shrinks
+//      in size to half of its capacity.
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
@@ -32,12 +34,12 @@ using namespace std;
  */
 class ArrayStack{
 private:
-  int *A;           // pointer to array of int's
-  int size;         // current stack size
-  int maxSize;      // current max stack size
-  int top;          // top of stack
-  int numResize;    // times stack is resized
-  int currentSize;  // the number of elements in the stack
+  int *A;                             // pointer to array of int's
+  int size;                           // current stack size
+  int maxSize;                        // current max stack size
+  int top;                            // top of stack
+  int numResize;                      // times stack is resized
+  int currentSize;                    // the number of elements in the stack
 
 public:
  /**
@@ -146,8 +148,8 @@ public:
       return A[top];
     }
     
-    return -99; // some sentinel value
-                // not a good solution
+    return -99;                       // some sentinel value
+                                      // not a good solution
   }
 
  /**
@@ -165,13 +167,13 @@ public:
   int Pop(){
     if(!Empty()){
       top--;
-      CheckResize();             // Check for decreasing the size of the stack
+      CheckResize();                  // Check for decreasing the size of the stack
       return A[top];
       
     }
 
-    return -99; // some sentinel value
-                // not a good solution
+    return -99;                       // some sentinel value
+                                      // not a good solution
   }
 
  /**
@@ -206,9 +208,9 @@ public:
   *      NULL
   */
   void Push(int x){
-    CheckResize();              // Check for decreasing the size of the stack
-    if(!Full()){                // If stack isn't full
-      A[++top] = x;             // Add x to the top of the stack
+    CheckResize();                    // Check for decreasing the size of the stack
+    if(!Full()){                      // If stack isn't full
+      A[++top] = x;                   // Add x to the top of the stack
     }
     
   }
@@ -227,21 +229,21 @@ public:
   *      NULL
   */
   void ContainerGrow(){
-    int newSize = size*2;       // double size of original
-    int *B = new int[newSize];  // allocate new memory
+    int newSize = size*2;             // double size of original
+    int *B = new int[newSize];        // allocate new memory
 
-    for(int i=0;i<size;i++){    // copy values to new array
+    for(int i=0;i<size;i++){          // copy values to new array
       B[i] = A[i];
     }
 
-    delete [] A;                // delete old array
+    delete [] A;                      // delete old array
 
-    if (newSize >= maxSize){    // if the new size > current maxSize
+    if (newSize >= maxSize){          // if the new size > current maxSize
       maxSize = newSize;
     }
-    size = newSize;             // save new size
+    size = newSize;                   // save new size
 
-    A = B;                      // reset array pointer
+    A = B;                            // reset array pointer
 
   }
 
