@@ -17,6 +17,8 @@
 #include <iostream>
 #include <fstream>
 
+void Print(ofstream&, ArrayStack);
+
 using namespace std;
 
 /**
@@ -81,7 +83,54 @@ public:
     top = -1;
     numResize = 0;
   }
- 
+
+  /**
+  * getNumResize
+  * 
+  * Description:
+  *      Getter function for the private variable numResize
+  * 
+  * Params:
+  *     - NULL
+  * 
+  * Returns:
+  *     - [int] numResize
+  */
+  int getNumResize(){
+    return numResize;
+  }
+  
+  /**
+  * getMaxSize
+  * 
+  * Description:
+  *      Getter function for the private variable maxSize
+  * 
+  * Params:
+  *     - NULL
+  * 
+  * Returns:
+  *     - [int] maxSize
+  */
+  int getMaxSize(){
+    return maxSize;
+  }
+
+  /**
+  * getSize
+  * 
+  * Description:
+  *      Getter function for the private variable size
+  * 
+  * Params:
+  *     - NULL
+  * 
+  * Returns:
+  *     - [int] size
+  */
+  int getSize(){
+    return size;
+  }
 
  /**
   * Public bool: HalfEmpty
@@ -176,24 +225,7 @@ public:
                                       // not a good solution
   }
 
- /**
-  * Public void: Print
-  * 
-  * Description:
-  *      Prints max size of stack, number of times 
-  *      stack was resized, and ending size of stack
-  * 
-  * Params:
-  *      NULL
-  * 
-  * Returns:
-  *      NULL
-  */
-  void Print(){
-    cout << "The maximum capacity reached was " << maxSize << '\n';   // Print max size of stack (maxSize)
-    cout << "The stack was resized " << numResize << "times\n";   // Print the number of resizes (numResize)
-    cout << "The ending size is " << size << '\n';   // Print the final size of the stack (size)
-  } 
+ 
 
  /**
   * Public bool: Push
@@ -297,7 +329,7 @@ int main() {
   ifstream infile;
 	ofstream outfile;
   infile.open("commands.dat");
-  // outfile.open(inFileName);
+  outfile.open("out.txt");
 
                 
   infile >> num;                      // Read in a number from the file
@@ -310,5 +342,25 @@ int main() {
 
     infile >> num;                    // Read in a new number and begin loop again
   }
-  stack.Print();
+  Print(outfile, stack);
 }
+
+/**
+  * Public void: Print
+  * 
+  * Description:
+  *      Prints max size of stack, number of times 
+  *      stack was resized, and ending size of stack
+  * 
+  * Params:
+  *      [ outfile ] : allows the function to print to a file
+  *      [ stack ] : gives the function access to the stack
+  * 
+  * Returns:
+  *      NULL
+  */
+  void Print(ofstream& outfile, ArrayStack stack){
+    outfile << "The maximum capacity reached was " << stack.maxSize << '\n';   // Print max size of stack (maxSize)
+    outfile << "The stack was resized " << stack.numResize << "times\n";   // Print the number of resizes (numResize)
+    outfile << "The ending size is " << stack.size << '\n';   // Print the final size of the stack (size)
+  } 
