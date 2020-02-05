@@ -33,7 +33,8 @@ using namespace std;
 class ArrayStack{
 private:
   int *A;           // pointer to array of int's
-  int size;         // current max stack size
+  int size;         // current stack size
+  int maxSize;      // current max stack size
   int top;          // top of stack
   int numResize;    // times stack is resized
   int currentSize;  // the number of elements in the stack
@@ -53,6 +54,7 @@ public:
   */
   ArrayStack(){
     size = 10;
+    maxSize = size;
     A = new int[size];
     top = -1;
     numResize = 0;
@@ -72,27 +74,30 @@ public:
   */
   ArrayStack(int s){
     size = s;
+    maxSize = size;
     A = new int[s];
     top = -1;
     numResize = 0;
   }
+ 
+
  /**
-  * Public int: getNumResize
+  * Public bool: HalfEmpty
   * 
   * Description:
-  *      Getter for int numResize
+  *      Stack half empty?
   * 
   * Params:
   *      NULL
   * 
   * Returns:
-  *      numResize
+  *      [bool] true = stack half empty
   */
-  int getNumResize(){
-    return numResize;
+  bool HalfEmpty(){
+    return (top <= size/2);
   }
-
- /**
+  
+  /**
   * Public bool: Empty
   * 
   * Description:
@@ -107,7 +112,7 @@ public:
   bool Empty(){
     return (top <= -1);
   }
-  
+
  /**
   * Public bool: Full
   * 
@@ -159,7 +164,10 @@ public:
   */
   int Pop(){
     if(!Empty()){
-      return A[top--];
+      top--;
+      CheckResize();             // Check for decreasing the size of the stack
+      return A[top];
+      
     }
 
     return -99; // some sentinel value
@@ -170,7 +178,8 @@ public:
   * Public void: Print
   * 
   * Description:
-  *      Prints stack to standard out
+  *      Prints max size of stack, number of times 
+  *      stack was resized, and ending size of stack
   * 
   * Params:
   *      NULL
@@ -179,10 +188,9 @@ public:
   *      NULL
   */
   void Print(){
-    for(int i=0;i<=top;i++){
-      cout<<A[i]<<" ";
-    }
-    cout<<endl;
+    cout << "The maximum capacity reached was " << maxSize << '\n';   // Print max size of stack (maxSize)
+    cout << "The stack was resized " << numResize << "times\n";   // Print the number of resizes (numResize)
+    cout << "The ending size is " << size << '\n';   // Print the final size of the stack (size)
   } 
 
  /**
@@ -195,18 +203,13 @@ public:
   *      [int] : item to be added
   * 
   * Returns:
-  *      [bool] ; success = true
+  *      NULL
   */
-  bool Push(int x){
-    if(Full()){
-      ContainerGrow();
+  void Push(int x){
+    CheckResize();              // Check for decreasing the size of the stack
+    if(!Full()){                // If stack isn't full
+      A[++top] = x;             // Add x to the top of the stack
     }
-    if(!Full()){
-      A[++top] = x;
-      return true;
-    }
-    
-    return false;
     
   }
 
@@ -233,6 +236,9 @@ public:
 
     delete [] A;                // delete old array
 
+    if (newSize >= maxSize){    // if the new size > current maxSize
+      maxSize = newSize;
+    }
     size = newSize;             // save new size
 
     A = B;                      // reset array pointer
@@ -243,8 +249,8 @@ public:
   * Public void: ContainerShrink
   * 
   * Description:
-  *      Resizes the container for the stack by doubling
-  *      its capacity
+  *      Resizes the container for the stack by cutting
+  *      its capacity in half
   * 
   * Params:
   *      NULL
@@ -253,22 +259,27 @@ public:
   *      NULL
   */
   void ContainerShrink(){
-    int newSize = size*2;       // double size of original
-    int *B = new int[newSize];  // allocate new memory
+    int newSize = size*0.5;           // cut size of original in half
+    int *B = new int[newSize];        // allocate new memory
 
-    for(int i=0;i<size;i++){    // copy values to new array
+    for(int i=0;i<size;i++){          // copy values to new array
       B[i] = A[i];
     }
 
-    delete [] A;                // delete old array
+    delete [] A;                      // delete old array
 
-    size = newSize;             // save new size
+    size = newSize;                   // save new size
 
-    A = B;                      // reset array pointer
+    A = B;                            // reset array pointer
 
   }
-  bool CheckResize(){
-
+  void CheckResize(){
+      if (Full()){
+        ContainerGrow();
+      }
+      else if (HalfEmpty()){
+        ContainerShrink();
+      }
   }
 
 };
@@ -286,30 +297,16 @@ int main() {
   infile.open("commands.dat");
   // outfile.open(inFileName);
 
-  // Loop until end of file
-  while (!infile.eof()){
-    infile >> num;
-    if (num % 2 = 0)
-      stack.Push(num);
-    else
-      stack.Pop();
-    stack.CheckResize();
-  }
-  // Loop for until file is empty
-  // Read in a number
-  int r = 0;
+                
+  infile >> num;                      // Read in a number from the file
+  while (!infile.eof())               // Loop until file is enpty
+  {
+    if (num % 2 == 0)                 // num is even
+      stack.Push(num);                // push num to stack
+    else                              // num is odd
+      stack.Pop();                    // pop an even number from the end of the stack
 
-  for(int i=0;i<20;i++){
-    r = rand() % 100;
-    r = i+1;
-    if(!stack.Push(r)){
-      cout<<"Push failed"<<endl;
-    }
+    infile >> num;                    // Read in a new number and begin loop again
   }
-
-  for(int i=0;i<7;i++){
-    stack.Pop();
-  }
-
   stack.Print();
 }
