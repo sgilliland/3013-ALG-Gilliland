@@ -325,7 +325,7 @@ int main() {
   ArrayStack stack;
   int num = 0;
 
-  // Open the file
+  // Open the files
   ifstream infile;
 	ofstream outfile;
   infile.open("commands.dat");
@@ -342,7 +342,7 @@ int main() {
 
     infile >> num;                    // Read in a new number and begin loop again
   }
-  Print(outfile, stack);
+  Print(outfile, stack);              // Call function to print the results
 }
 
 /**
