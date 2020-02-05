@@ -360,7 +360,7 @@ int main() {
   *      NULL
   */
   void Print(ofstream& outfile, ArrayStack stack){
-    outfile << "The maximum capacity reached was " << stack.maxSize << '\n';   // Print max size of stack (maxSize)
-    outfile << "The stack was resized " << stack.numResize << "times\n";   // Print the number of resizes (numResize)
-    outfile << "The ending size is " << stack.size << '\n';   // Print the final size of the stack (size)
+    outfile << "The maximum capacity reached was " << stack.getMaxSize() << '\n';   // Print max size of stack (maxSize)
+    outfile << "The stack was resized " << stack.getNumResize() << "times\n";       // Print the number of resizes (numResize)
+    outfile << "The ending size is " << stack.getSize() << '\n';                    // Print the final size of the stack (size)
   } 
