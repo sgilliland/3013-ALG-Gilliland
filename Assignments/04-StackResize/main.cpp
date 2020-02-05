@@ -13,6 +13,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -35,6 +36,7 @@ private:
   int size;         // current max stack size
   int top;          // top of stack
   int numResize;    // times stack is resized
+  int currentSize;  // the number of elements in the stack
 
 public:
  /**
@@ -197,7 +199,7 @@ public:
   */
   bool Push(int x){
     if(Full()){
-      Resize();
+      ContainerGrow();
     }
     if(!Full()){
       A[++top] = x;
@@ -209,7 +211,7 @@ public:
   }
 
  /**
-  * Public void: Resize
+  * Public void: ContainerGrow
   * 
   * Description:
   *      Resizes the container for the stack by doubling
@@ -221,7 +223,7 @@ public:
   * Returns:
   *      NULL
   */
-  void Resize(){
+  void ContainerGrow(){
     int newSize = size*2;       // double size of original
     int *B = new int[newSize];  // allocate new memory
 
@@ -237,12 +239,64 @@ public:
 
   }
 
+  /**
+  * Public void: ContainerShrink
+  * 
+  * Description:
+  *      Resizes the container for the stack by doubling
+  *      its capacity
+  * 
+  * Params:
+  *      NULL
+  * 
+  * Returns:
+  *      NULL
+  */
+  void ContainerShrink(){
+    int newSize = size*2;       // double size of original
+    int *B = new int[newSize];  // allocate new memory
+
+    for(int i=0;i<size;i++){    // copy values to new array
+      B[i] = A[i];
+    }
+
+    delete [] A;                // delete old array
+
+    size = newSize;             // save new size
+
+    A = B;                      // reset array pointer
+
+  }
+  bool CheckResize(){
+
+  }
+
 };
 
 // MAIN DRIVER
 // Simple Array Based Stack Usage:
 int main() {
+  // Defining the stack and variables
   ArrayStack stack;
+  int num = 0;
+
+  // Open the file
+  ifstream infile;
+	ofstream outfile;
+  infile.open("commands.dat");
+  // outfile.open(inFileName);
+
+  // Loop until end of file
+  while (!infile.eof()){
+    infile >> num;
+    if (num % 2 = 0)
+      stack.Push(num);
+    else
+      stack.Pop();
+    stack.CheckResize();
+  }
+  // Loop for until file is empty
+  // Read in a number
   int r = 0;
 
   for(int i=0;i<20;i++){
