@@ -359,21 +359,16 @@ int main() {
 	// Open the files
 	ifstream infile;
 	ofstream outfile;
-	infile.open("in.txt");
+	infile.open("nums_test.dat");
 	outfile.open("out.txt");
 
-
-	                      // Read in a number from the file
 	while (!infile.eof())               // Loop until file is enpty
 	{
-		infile >> num;
-		if (num % 2 == 0) {				// num is even
-			
-			stack.Push(num);			// push num to stack
-			even++;
-		}               
-		else							// num is odd
-			stack.Pop();				// pop an even number from the end of the stack
+		infile >> num;                    // Read in a number from the file
+		if (num % 2 == 0) 				        // num is even
+			stack.Push(num);			          // push num to stack            
+		else							                // num is odd
+			stack.Pop();				            // pop an even number from the end of the stack
 	}
 	Print(outfile, stack);              // Call function to print the results
 }
