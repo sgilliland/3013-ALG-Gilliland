@@ -35,12 +35,12 @@ using namespace std;
 class ArrayStack
 {
 private:
-	int *A;			 // pointer to array of int's
-	int size;		 // current stack size
-	int maxSize;	 // current max stack size
-	int top;		 // top of stack
-	int numResize;   // times stack is resized
-	int currentSize; // the number of elements in the stack
+	int *A;			 									// pointer to array of int's
+	int size;		 									// current stack size
+	int maxSize;	 									// current max stack size
+	int top;		 									// top of stack
+	int numResize;   									// number of times stack is resized
+	int currentSize; 									// the number of elements in the stack
 
 public:
 	/**
@@ -57,11 +57,11 @@ public:
 	 */
 	ArrayStack()
 	{
-		size = 10;
-		maxSize = size;
-		A = new int[size];
-		top = -1;
-		numResize = 0;
+		size = 10;										// size takes value of 10
+		maxSize = size;									// size is the maximum size reached
+		A = new int[size];								// intantiating an array
+		top = -1;										// stack is empty
+		numResize = 0;									// nothing has been resized yet
 	}
 
 	/**
@@ -78,11 +78,11 @@ public:
 	 */
 	ArrayStack(int s)
 	{
-		size = s;
-		maxSize = size;
-		A = new int[s];
-		top = -1;
-		numResize = 0;
+		size = s;										// size takes value of s
+		maxSize = size;									// size is the maximum size reached
+		A = new int[s];									// intantiating an array of size s
+		top = -1;										// stack is empty
+		numResize = 0;									// nothing has been resized yet
 	}
 
 	/**
@@ -99,7 +99,7 @@ public:
 	*/
 	int getNumResize()
 	{
-		return numResize;
+		return numResize;								// returns private variable numResize
 	}
 
 	/**
@@ -116,7 +116,7 @@ public:
 	*/
 	int getMaxSize()
 	{
-		return maxSize;
+		return maxSize;									// returns private variable maxSize
 	}
 
 	/**
@@ -133,7 +133,7 @@ public:
 	*/
 	int getSize()
 	{
-		return size;
+		return size;									// returns private variable size
 	}
 
 	/**
@@ -150,7 +150,7 @@ public:
 	 */
 	bool HalfEmpty()
 	{
-		return (top <= size / 2);
+		return (top <= size / 2);						// returns true if the stack is half-empty
 	}
 
 	/**
@@ -167,9 +167,8 @@ public:
 	*/
 	bool Empty()
 	{
-		return (top <= -1);
+		return (top <= -1);								// returns true if the stack is empty
 	}
-
 	/**
 	 * Public bool: Full
 	 *
@@ -184,7 +183,7 @@ public:
 	 */
 	bool Full()
 	{
-		return (top >= size - 1);
+		return (top >= size - 1);						// returns true if the stack is full
 	}
 
 	/**
@@ -201,13 +200,12 @@ public:
 	 */
 	int Peek()
 	{
-		if (!Empty())
+		if (!Empty())									// if stack is not empty
 		{
-			return A[top];
+			return A[top];								// returns value at top of stack
 		}
 
-		return -99; // some sentinel value
-					// not a good solution
+		return -99; 									// some sentinel value if stack is empty
 	}
 
 	/**
@@ -224,15 +222,14 @@ public:
 	 */
 	int Pop()
 	{
-		if (!Empty())
+		if (!Empty())									// if stack is not empty
 		{
-			top--;
-			CheckResize(); // Check for decreasing the size of the stack
-			return A[top];
+			top--;										// decrement top
+			CheckResize(); 								// check for decreasing the size of the stack
+			return A[top];								// return the value for top
 		}
 
-		return -99; // some sentinel value
-					// not a good solution
+		return -99; 									// some sentinel value if stack is empty
 	}
 
 	/**
@@ -249,10 +246,10 @@ public:
 	 */
 	void Push(int x)
 	{
-		CheckResize(); // Check for decreasing the size of the stack
-		if (!Full())
-		{				  // If stack isn't full
-			A[++top] = x; // Add x to the top of the stack
+		CheckResize(); 									// Check for decreasing the size of the stack
+		if (!Full())				  					// If stack isn't full
+		{
+			A[++top] = x; 								// Add x to the top of the stack
 		}
 	}
 
@@ -271,24 +268,24 @@ public:
 	 */
 	void ContainerGrow()
 	{
-		int newSize = size * 1.75; // double size of original
-		int *B = new int[newSize]; // allocate new memory
+		int newSize = size * 1.75; 						// newSize is 1.75 times bigger than size
+		int *B = new int[newSize]; 						// allocate new memory
 
 		for (int i = 0; i < newSize; i++)
-		{ // copy values to new array
-			B[i] = A[i];
+		{ 
+			B[i] = A[i];								// copy values to new array
 		}
 
-		delete[] A; // delete old array
+		delete[] A; 									// delete old array
 
-		if (newSize >= maxSize)
-		{					   // if newSize > current maxSize
-			maxSize = newSize; // maxSize will now be newSize
+		if (newSize >= maxSize)					   		// if newSize > current maxSize
+		{
+			maxSize = newSize; 							// maxSize will now be newSize
 		}
-		size = newSize; // save new size
+		size = newSize; 								// save new size
 
-		A = B;		 // reset array pointer
-		numResize++; // increment numResize
+		A = B;		 									// reset array pointer
+		numResize++; 									// increment numResize
 	}
 
 	/**
@@ -306,20 +303,20 @@ public:
 	*/
 	void ContainerShrink()
 	{
-		int newSize = size / 2;	// cut size of original in half
-		int *B = new int[newSize]; // allocate new memory
+		int newSize = size * 0.5;						// newSize is half of size
+		int *B = new int[newSize]; 						// allocate new memory
 
 		for (int i = 0; i < newSize; i++)
-		{ // copy values to new array
-			B[i] = A[i];
+		{ 
+			B[i] = A[i];								// copy values to new array
 		}
 
-		delete[] A; // delete old array
+		delete[] A; 									// delete old array
 
-		size = newSize; // save new size
+		size = newSize; 								// save new size
 
-		A = B;		 // reset array pointer
-		numResize++; // increment numResize
+		A = B;		 									// reset array pointer
+		numResize++; 									// increment numResize
 	}
 
 	/*
@@ -327,7 +324,8 @@ public:
 	*
 	* Description :
 	*	   Checks to see if the stack needs to be
-	*	   resized, and whether it should grow or shrink
+	*	   resized, and whether it should grow or shrink.
+	*	   Does not allow stack to reach a size < 10.
 	*
 	* Params :
 	*	   NULL
@@ -337,29 +335,29 @@ public:
 	*/
 	void CheckResize()
 	{
-		if (Full())
+		if (Full())										// if stack is full
 		{
-			ContainerGrow();
+			ContainerGrow();							// increase the size of the container
 		}
-		else if (HalfEmpty() && size > 20)
+		else if (HalfEmpty() && size > 20)				// if stack is more than half empty
 		{
-			ContainerShrink();
+			ContainerShrink();							// shrink the stack
 		}
-		else if (HalfEmpty() && size < 20)
-		{
-			int newSize = 10;		   // changes size of stack to 10
-			int *B = new int[newSize]; // allocate new memory
+		else if (HalfEmpty() && size < 20)				// if the size is less than 20,
+		{												// but needs to shrink
+			int newSize = 10;		   					// change size of stack to 10
+			int *B = new int[newSize]; 					// allocate new memory
 
 			for (int i = 0; i < newSize; i++)
-			{ // copy values to new array
-				B[i] = A[i];
+			{ 
+				B[i] = A[i];							// copy values to new array
 			}
 
-			delete[] A; // delete old array
+			delete[] A; 								// delete old array
 
-			size = newSize; // save new size
+			size = newSize; 							// save new size
 
-			A = B; // reset array pointer
+			A = B; 										// reset array pointer
 			numResize++;
 		}
 	}
@@ -371,26 +369,23 @@ void Print(ofstream &outfile, ArrayStack &stack);
 // Simple Array Based Stack Usage:
 int main()
 {
-	// Defining the stack and variables
-	ArrayStack stack;
-	int num = 0;
-	int even = 0;
-	int odd = 0;
-	// Open the files
-	ifstream infile;
+	ArrayStack stack;									// Defining the stack and variables
+	int num = 0;										// num represents the number read from the file
+	
+	ifstream infile;									// Open the files
 	ofstream outfile;
 	infile.open("nums_test.dat");
 	outfile.open("out.txt");
 
-	while (!infile.eof()) // Loop until file is enpty
+	while (!infile.eof()) 								// Loop until file is enpty
 	{
-		infile >> num;		 // Read in a number from the file
-		if (num % 2 == 0)	// num is even
-			stack.Push(num); // push num to stack
-		else				 // num is odd
-			stack.Pop();	 // pop an even number from the end of the stack
+		infile >> num;		 							// Read in a number from the file
+		if (num % 2 == 0)								// num is even
+			stack.Push(num); 							// push num to stack
+		else				 							// num is odd
+			stack.Pop();	 							// pop an even number from the end of the stack
 	}
-	Print(outfile, stack); // Call function to print the results
+	Print(outfile, stack); 								// Call function to print the results
 }
 
 /**
