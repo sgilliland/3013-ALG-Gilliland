@@ -405,9 +405,13 @@ int main()
 void Print(ofstream &outfile, ArrayStack &stack)
 {
 	outfile << "****************************************************\n";
-	outfile << "\t\tAssignment 4 - Resizing the Stack\n\t\tCMPS 3013\n\t\tSarah Gilliland\n\n";
-	outfile << "\t\tMax Stack Size: " << stack.getMaxSize() << '\n';		 // Print max size of stack (maxSize)
-	outfile << "\t\tEnd Stack Size: " << stack.getSize() << '\n';			 // Print the final size of the stack (size)
-	outfile << "\t\tStack Resized:  " << stack.getNumResize() << " times\n"; // Print the number of resizes (numResize)
+	outfile << "\t\tAssignment 4 - Resizing the Stack\n" 
+		<< "\t\tCMPS 3013\n\t\tSarah Gilliland\n\n";
+	outfile << "\t\tMax Stack Size: " 
+		<< stack.getMaxSize() << '\n';		   // Print max size of stack
+	outfile << "\t\tEnd Stack Size: "
+		<< stack.getSize() << '\n';			   // Print final size of stack
+	outfile << "\t\tStack Resized:  " 
+		<< stack.getNumResize() << " times\n"; // Print number of resizes
 	outfile << "****************************************************\n";
 }
