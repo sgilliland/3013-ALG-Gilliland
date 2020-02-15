@@ -10,12 +10,12 @@ using namespace std;
  *          Heap        : default constructor
  *          Heap(int)   : overload constructor with heap size
  *      private:
- *          BubbleUp    : you comment this
- *          Left        : you comment this
- *          OnHeap      : you comment this
- *          Parent      : you comment this
- *          Right       : you comment this
- *          Swap        : you comment this
+ *          BubbleUp    : moves a number to its correct place
+ *          Left        : finds index of left child
+ *          OnHeap      : checks if a value is on the heap
+ *          Parent      : finds parent index of a child index
+ *          Right       : finds index of right child
+ *          Swap        : swaps values of two indices
  *          /// Fix These:
  *          SinkDown    : you comment this
  *          PickChild   : you comment this
@@ -118,9 +118,9 @@ private:
         H[j] = temp;
     }
 
-    ////////////////////////////
-    //Fix These Methods
-    ////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //                                    MY EDITS                                          //
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * 
