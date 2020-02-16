@@ -10,19 +10,19 @@ using namespace std;
  *          Heap        : default constructor
  *          Heap(int)   : overload constructor with heap size
  *      private:
- *          BubbleUp    : moves a number to its correct place
+ *          BubbleUp    : moves a number up to its correct place
  *          Left        : finds index of left child
  *          OnHeap      : checks if a value is on the heap
  *          Parent      : finds parent index of a child index
  *          Right       : finds index of right child
  *          Swap        : swaps values of two indices
  *          /// Fix These:
- *          SinkDown    : you comment this
- *          PickChild   : you comment this
+ *          SinkDown    : moves a number down to its correct place
+ *          PickChild   : picks the lesser child or the only child
  *      public:
- *          Insert      : you comment this
+ *          Insert      : adds an item to the heap
  *          Print       : you comment this
- *          Remove      : you comment this
+ *          Remove      : removes and item from the heap
  */
 class Heap {
 private:
@@ -141,7 +141,17 @@ private:
      * @return              : void 
      */
     void SinkDown(int index) {
-        //do stuff!
+        // check parent is not of beginning of array
+        if (Parent(index) >= 1) {
+            // index is on array and value is less than parent
+            while (index > 1 && H[index] > H[Parent(index)]) {
+                // do a swap
+                Swap(index, Parent(index));
+
+                // update index to values new position
+                index = Parent(index);
+            }
+        }
     }
 
     /**
@@ -154,6 +164,21 @@ private:
      * @return              : index to child 
      */
     int PickChild(int index) {
+        // check if left child is only child
+        // check if right child is only child
+        if (Left(index) <=  Right(index)){         // left child is the smallest
+            return Left(index);                           // return the left child
+        }
+        // check right child
+        else if (Left(index) >  Right(index)){
+            return Right(index);
+        }
+        // Check to see if there is only one child
+            // If one child, return it
+        // If there are two children
+            // see which child is smaller
+            // Return smallest child
+        // Else there are no children?
         return 0; // temporary suppress of warning
     }
 
