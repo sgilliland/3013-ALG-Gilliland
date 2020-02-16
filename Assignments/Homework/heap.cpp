@@ -16,12 +16,12 @@ using namespace std;
  *          Parent      : finds parent index of a child index
  *          Right       : finds index of right child
  *          Swap        : swaps values of two indices
- *          /// Fix These:
- *          SinkDown    : moves a number down to its correct place
- *          PickChild   : picks the lesser child or the only child
+ *          Heapify     : takes an array and puts all values in a heap
+ *          SinkDown    : sorts heap after an item is removed
+ *          PickChild   : picks the smaller child or the only child
  *      public:
  *          Insert      : adds an item to the heap
- *          Print       : you comment this
+ *          Print       : prints the contents of the heap to the screen
  *          Remove      : removes and item from the heap
  */
 class Heap {
@@ -41,7 +41,7 @@ private:
    * @return             : void
    */
     void BubbleUp(int index) {
-        // check parent is not of beginning of array
+        // check parent is not of beginning of heap
         if (Parent(index) >= 1) {
             // index is on array and value is less than parent
             while (index > 1 && H[index] < H[Parent(index)]) {
@@ -118,17 +118,20 @@ private:
         H[j] = temp;
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //                                    MY EDITS                                          //
-    //////////////////////////////////////////////////////////////////////////////////////////
-
     /**
+     *  Heapify
+     * @description:
+     *      Creates a heap and uses the Insert method to copy all values from 
+     *      a given array into their specific order in the heap.
      * 
      * @param  {int*} A   :  array pointer with unsorted values to make into a heap
      * @param  {int} size :  size of new heap
+     * @return            :  void
      */
     void Heapify(int* A, int size) {
-        // do it!
+        for (int i = 1; i <= size; i++){
+            Insert(A[i]);
+        }
     }
 
     /**
@@ -140,17 +143,14 @@ private:
      * @param  {int} index  : index to start from in the array
      * @return              : void 
      */
-    void SinkDown(int index) {
-        // check parent is not of beginning of array
-        if (Parent(index) >= 1) {
-            // index is on array and value is less than parent
-            while (index > 1 && H[index] > H[Parent(index)]) {
-                // do a swap
-                Swap(index, Parent(index));
-
-                // update index to values new position
-                index = Parent(index);
-            }
+    void SinkDown(int index) { 
+        if (H[Left(index)] > H[index] && Left(index) < end){
+            Swap(index, Left(index));
+            SinkDown(Left(index));
+        }
+        else if (H[Right(index)] > H[index] && Right(index) < end){
+            Swap(index, Right(index));
+            SinkDown(Right(index));
         }
     }
 
@@ -164,20 +164,17 @@ private:
      * @return              : index to child 
      */
     int PickChild(int index) {
-        // check if left child is only child
-        // check if right child is only child
-        if (Left(index) <=  Right(index))                 // left child is the smallest
-            return Left(index);                           // return the left child
-        // check right child
-        else if (Left(index) >  Right(index))             // right child is the smallest
-            return Right(index);                          // returns the right child
-        else                                              // there are no children
-            return 0;                                     // supression of the warning CHANGE IT?
-        // Check to see if there is only one child
-            // If one child, return it
-        // If there are two children
-            // see which child is smaller
-            // Return smallest child
+        if (Right(index) == end)                             // check if only child
+            return H[Left(index)];
+
+        if (H[Left(index)] <=  H[Right(index)])              // left child is the smallest
+            return H[Left(index)];                           // return the left child
+            
+        else if (H[Left(index)] >  H[Right(index)])          // right child is the smallest
+            return H[Right(index)];                          // returns the right child
+
+        else                                                 // there are no children
+            return 0;                                        // return a zero
     }
 
 public:
