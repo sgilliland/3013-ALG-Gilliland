@@ -236,7 +236,7 @@ public:
         int temp = H[1];
         H[1] = H[end];
         --end;
-
+        SinkDown(1);            // call SinkDown method from index 1
         return temp;
     }
 };
