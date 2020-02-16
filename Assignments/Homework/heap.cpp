@@ -166,20 +166,18 @@ private:
     int PickChild(int index) {
         // check if left child is only child
         // check if right child is only child
-        if (Left(index) <=  Right(index)){         // left child is the smallest
+        if (Left(index) <=  Right(index))                 // left child is the smallest
             return Left(index);                           // return the left child
-        }
         // check right child
-        else if (Left(index) >  Right(index)){
-            return Right(index);
-        }
+        else if (Left(index) >  Right(index))             // right child is the smallest
+            return Right(index);                          // returns the right child
+        else                                              // there are no children
+            return 0;                                     // supression of the warning CHANGE IT?
         // Check to see if there is only one child
             // If one child, return it
         // If there are two children
             // see which child is smaller
             // Return smallest child
-        // Else there are no children?
-        return 0; // temporary suppress of warning
     }
 
 public:
