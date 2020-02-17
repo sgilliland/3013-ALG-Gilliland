@@ -1,3 +1,23 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   
+// Author:           Sarah Gilliland
+// Email:            sarah13grace@gmail.com
+// Label:            H02
+// Title:            Heapify
+// Course:           CMPS 3013
+// Semester:         Spring 2020
+//
+// Description:
+//       This program reads an creates a max heap out of an array of integers
+//       and inserts and removes integers as commanded, all the while keeping
+//       order. It then prints the resulting heap to the screen.
+//       
+// Usage: 
+//      - None
+//      
+// Files:            
+//      heap.cpp    : driver program
+/////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 
 using namespace std;
