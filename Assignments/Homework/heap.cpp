@@ -148,9 +148,11 @@ private:
      * @param  {int} size :  size of new heap
      * @return            :  void
      */
-    void Heapify(int* A, int size) {                        
-        for (int i = 1; i <= size; i++){
-            Insert(A[i]);                                   // inserting all values from array into the heap
+    void Heapify(int *A, int size)
+    {
+        for (int i = 1; i <= size; i++)
+        {
+            Insert(A[i]);       // inserting all values from array into the heap
         }
     }
 
@@ -163,14 +165,17 @@ private:
      * @param  {int} index  : index to start from in the array
      * @return              : void 
      */
-    void SinkDown(int index) { 
-        if (H[Left(index)] > H[index] && Left(index) < end){                // if left child is greater than parent
-            Swap(index, Left(index));                                       // swap parent and left child
-            SinkDown(Left(index));                                          // call function recursively
+    void SinkDown(int index)
+    {
+        if (H[Left(index)] > H[index] && Left(index) < end)
+        {                                           // if left child is greater than parent
+            Swap(index, Left(index));               // swap parent and left child
+            SinkDown(Left(index));                  // call function recursively
         }
-        else if (H[Right(index)] > H[index] && Right(index) < end){         // if right child is greater than parent
-            Swap(index, Right(index));                                      // swap parent and right child
-            SinkDown(Right(index));                                         // call function recursively
+        else if (H[Right(index)] > H[index] && Right(index) < end)
+        {                                           // if right child is greater than parent
+            Swap(index, Right(index));              // swap parent and right child
+            SinkDown(Right(index));                 // call function recursively
         }
     }
 
@@ -183,18 +188,19 @@ private:
      * @param  {int} index  : index of parent in the array
      * @return              : index to child 
      */
-    int PickChild(int index) {
-        if (Right(index) == end)                             // check if only child
+    int PickChild(int index)
+    {
+        if (Right(index) == end)                    // check if only child
             return H[Left(index)];
 
-        if (H[Left(index)] <=  H[Right(index)])              // left child is the smallest
-            return H[Left(index)];                           // return the left child
-            
-        else if (H[Left(index)] >  H[Right(index)])          // right child is the smallest
-            return H[Right(index)];                          // returns the right child
+        if (H[Left(index)] <= H[Right(index)])      // left child is the smallest
+            return H[Left(index)];                  // return the left child
 
-        else                                                 // there are no children
-            return 0;                                        // return a zero
+        else if (H[Left(index)] > H[Right(index)])  // right child is the smallest
+            return H[Right(index)];                 // returns the right child
+
+        else                                        // there are no children
+            return 0;                               // return a zero
     }
 
 public:
@@ -255,6 +261,7 @@ public:
     int Remove() {
         int temp = H[1];
         H[1] = H[--end];
+        
         SinkDown(1);            // call SinkDown method to start from index 1
         return temp;
     }
