@@ -254,8 +254,7 @@ public:
      */
     int Remove() {
         int temp = H[1];
-        H[1] = H[end];
-        --end;
+        H[1] = H[--end];
         SinkDown(1);            // call SinkDown method to start from index 1
         return temp;
     }
