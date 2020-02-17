@@ -128,9 +128,9 @@ private:
      * @param  {int} size :  size of new heap
      * @return            :  void
      */
-    void Heapify(int* A, int size) {
+    void Heapify(int* A, int size) {                        
         for (int i = 1; i <= size; i++){
-            Insert(A[i]);
+            Insert(A[i]);                                   // inserting all values from array into the heap
         }
     }
 
@@ -144,13 +144,13 @@ private:
      * @return              : void 
      */
     void SinkDown(int index) { 
-        if (H[Left(index)] > H[index] && Left(index) < end){
-            Swap(index, Left(index));
-            SinkDown(Left(index));
+        if (H[Left(index)] > H[index] && Left(index) < end){                // if left child is greater than parent
+            Swap(index, Left(index));                                       // swap parent and left child
+            SinkDown(Left(index));                                          // call function recursively
         }
-        else if (H[Right(index)] > H[index] && Right(index) < end){
-            Swap(index, Right(index));
-            SinkDown(Right(index));
+        else if (H[Right(index)] > H[index] && Right(index) < end){         // if right child is greater than parent
+            Swap(index, Right(index));                                      // swap parent and right child
+            SinkDown(Right(index));                                         // call function recursively
         }
     }
 
@@ -214,7 +214,7 @@ public:
     }
 
     /**
-     * For test our heap !!!  
+     * For testing our heap !!!  
      */
     void Print() {
         for (int i = 1; i <= end - 1; i++) {
@@ -236,7 +236,7 @@ public:
         int temp = H[1];
         H[1] = H[end];
         --end;
-        SinkDown(1);            // call SinkDown method from index 1
+        SinkDown(1);            // call SinkDown method to start from index 1
         return temp;
     }
 };
