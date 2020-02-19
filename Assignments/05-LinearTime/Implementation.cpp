@@ -74,11 +74,7 @@ int main()
     cout << "\nTo go again, go ahead and type your next word.";
   }
   
-  
-
-  
-  
-  // Deallocate memory ?
+  // Clear memory
   delete W;
 
   system("pause");
