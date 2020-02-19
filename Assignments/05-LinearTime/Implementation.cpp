@@ -85,7 +85,7 @@ int main()
     Searching.Start();                      // starting timer to time loading the list
 
 
-    //W.Search(Stuff);                       // Begin the search
+    W.Search(Stuff);                       // Begin the search
 
 
     // stop timer and display time taken to search

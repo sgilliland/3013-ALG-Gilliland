@@ -58,14 +58,15 @@ class Dictionary
         }
 
     public:
+        // Default Constructor
         Dictionary()
         {
-            front = nullptr;
-            end = nullptr;
+            front = NULL;
+            end = NULL;
             totalTerms = 0;
-
         }
-
+        // Receives a word and its definition and places them in a node
+        // Adds the node to the linked list
         void Add(string word, string def)
         {
             word = LowerCase(word);   // make the term all lowercase letters
@@ -83,13 +84,16 @@ class Dictionary
             else
             {
                 // get ready to walk the list
-                Node *traverse = front;
+                Node *traverse = end;
+                /*
                 while (traverse->Next != NULL)
                 {
                     // walks the list
+
                     traverse = traverse->Next;
                 }
                 // now at proper place to link in new memory
+                */ 
                 traverse->Next = temp;
                 end = temp;
             }
@@ -103,7 +107,7 @@ class Dictionary
             int index = 0;              // index for substring vector
 
             // Search through whole json dictionary file
-            while (Temp != end->Next)
+            while (Temp != end)
             {
                 // suggestion takes value of the term we are looking at
                 suggestion = Temp->term;
@@ -123,6 +127,8 @@ class Dictionary
             }
         }
 
+        // Prints the first 10 terms of the vector if there are 10 or more
+        // or prints all terms if there are less than 10 terms
         void printTenWords()
         {
             // if there are 10 or more substrings
@@ -143,6 +149,7 @@ class Dictionary
             }
         }
 
+        // Gets and returns the private variable totalTerms
         int getTermsFound()
         {
             return totalTerms;                            // return number of matching terms
