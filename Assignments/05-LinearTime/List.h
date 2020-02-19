@@ -109,14 +109,26 @@ class Dictionary
 
         void printTenWords()
         {
-            for (int i = 0; i < 10; i++)
+            // if there are 10 or more substrings
+            if (totalTerms >= 10)
             {
-                cout << substrings[i] << '\t';
+                for (int i = 0; i < 10; i++)
+                {
+                    cout << substrings[i] << '\t';            // print first 10 substrings in the vector to the screen
+                }
+            }
+            // if there are less than 10 substrings
+            else
+            {
+                for (int i = 0; i < totalTerms; i++)
+                {
+                    cout << substrings[i] << '\t';            // print all substrings in the vector to the screen
+                }
             }
         }
 
         int getTermsFound()
         {
-            return totalTerms;
+            return totalTerms;                            // return number of matching terms
         }
 };
