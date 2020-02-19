@@ -16,7 +16,6 @@ int main()
   // Start the timer to time loading process
   Timer Loading;        // creating an object for the timer
   Loading.Start();      // starting timer to time the load
-  Loading.Sleep(1500);  //milliseconds
 
   // create a list to hold the dictionary in
   Dictionary *W;  
@@ -52,7 +51,6 @@ int main()
     // start timer for searching dictionary for suggestions
     Timer Searching;        // creating an object for the timer
     Searching.Start();      // starting timer to time the load
-    Searching.Sleep(1500);  //milliseconds
 
     // search for suggestions
     suggestion = "";
@@ -74,7 +72,7 @@ int main()
 
   // display number of total suggestions
   cout << "\n\nThere were " << numSuggestions << " in total.";
-  
+
   system("pause");
   return 0;
 }
