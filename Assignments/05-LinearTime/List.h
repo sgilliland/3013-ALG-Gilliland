@@ -1,4 +1,20 @@
-
+///////////////////////////////////////////////////////////////////////////////
+//                   
+// Author:           Sarah Gilliland
+// Email:            sarah13grace@gmail.com
+// Title:            List.h
+//
+// Description:
+//          This class is a linked list. It reads in words and their
+//          corresponding definitions and stores them as nodes.
+//
+// Usage:
+//
+//      
+//
+// Files:           
+//      None?
+/////////////////////////////////////////////////////////////////////////////////
 #pragma once
 #include <string>
 #include <iostream>
