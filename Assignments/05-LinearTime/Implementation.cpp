@@ -64,35 +64,39 @@ int main()
   
   
   // read typed characters and put them into a vector to read as a string
-  string input = "";
+  string Stuff = "";
   char letter;                              // variable for letter read in
   int numSuggestions = 0;                   // variable for total number of suggestions
 
 
-  while (letter = getch() != '9')           // program ends when user types a 9 instead of a letter
+  while ((letter = getch()) != '9')           // program ends when user types a 9 instead of a letter
   {
     cout << "Begin typing and type a space when you want suggestions.\n";
 
-    input += letter;                      // placing the new character in the vector
-    cout << letter;
+    Stuff += letter;                      // placing the new character in the vector
+    
+    if((int)letter != 10)
+    {
+      cout << Stuff << '\n';
+    }
 
 
     Timer Searching;                        // creating an object for the timer
     Searching.Start();                      // starting timer to time loading the list
 
 
-    W.Search(input);                       // Begin the search
+    //W.Search(Stuff);                       // Begin the search
 
 
     // stop timer and display time taken to search
     Searching.End();                        // end timer
     double s = Searching.Seconds();         // save number of seconds as the variable s
     
-    numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
-    W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+    //numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
+    //W.printTenWords();                     // print the first 10 matching terms (if there are 10)
     // display number of total suggestions
-    cout << "\n\nThere were " << numSuggestions << " in total.";
-    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
+    //cout << "\n\nThere were " << numSuggestions << " in total.";
+    //cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
   }
 
   system("pause");

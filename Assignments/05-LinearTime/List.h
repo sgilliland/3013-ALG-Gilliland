@@ -113,7 +113,7 @@ class Dictionary
                 suggestionSub = suggestion.substr(0, someWord.length());
 
                 // if someWord is a substring of suggestion, place in substrings vector
-                if (someWord == suggestionSub)
+                if (someWord == suggestionSub && index < 10)
                 {
                     substrings[index] = suggestion;       // adding the suggestion to the substring vector
                     index++;                              // increment index for substrings vector
