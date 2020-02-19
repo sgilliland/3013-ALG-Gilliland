@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "NewList.h"
+#include "List.h"
 #include "JsonFacade.hpp"       
 #include <time.h>
 #include <chrono> 
@@ -65,7 +65,7 @@ int main()
     // stop timer and display time taken to search
     Searching.End();                        // end timer
     double s = Searching.Seconds();         // save number of seconds as the variable s
-      
+    
     numSuggestions = W->getTermsFound();
 
     W->printTenWords();
