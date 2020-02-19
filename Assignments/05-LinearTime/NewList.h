@@ -89,19 +89,21 @@ class Dictionary
             // Search through whole json dictionary file
             while (Temp != end->Next)
             {
+                // suggestion takes value of the term we are looking at
                 suggestion = Temp->term;
-                // put suggestion into a vector of characters
+                
+                // use .substr() to get substrings of suggestion
+                // save substring as suggestionSub
                 suggestionSub = suggestion.substr(0, someWord.length());
 
-                // Add all things that someword's characters are substrings of
-                // if () someWord is a substring of suggestion, place in substrings vector
+                // if someWord is a substring of suggestion, place in substrings vector
                 if (someWord == suggestionSub)
                 {
                     substrings[index] = suggestion;       // adding the suggestion to the substring vector
-                    index++;          
-                    totalTerms++;
+                    index++;                              // increment index for substrings vector
+                    totalTerms++;                         // increment total number of matching terms
                 }
-                Temp = Temp->Next;
+                Temp = Temp->Next;                        // move to the next node
             }
         }
 
@@ -109,7 +111,7 @@ class Dictionary
         {
             for (int i = 0; i < 10; i++)
             {
-                cout << substrings[i];
+                cout << substrings[i] << '\t';
             }
         }
 

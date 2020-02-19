@@ -68,6 +68,7 @@ int main()
       
     numSuggestions = W->getTermsFound();
 
+    W->printTenWords();
     // display number of total suggestions
     cout << "\n\nThere were " << numSuggestions << " in total.";
     cout << "\nTo go again, go ahead and type your next word.";
