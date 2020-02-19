@@ -27,12 +27,12 @@ Node
 struct Node
 {
   string term;
-  //string def;			//holds definition of term
+  string def;			//holds definition of term
   Node *Next;
-  Node(string w) //Node(string w, string d)
+  Node(string w, string d)
   {
     term = w;
-    //def = d;
+    def = d;
     Next = NULL;
   }
 };
@@ -41,7 +41,8 @@ class Dictionary
 {
 private:
   Node *Start;
-
+  
+  // Method to get rid of capital letters
   string LowerCase(string input)
   {
     for (int i = 0; i < input.length(); i++)
@@ -68,10 +69,11 @@ public:
   void Add(string word, string def)
   {
 
-    word = LowerCase(word);
-    //def = LowerCase(def);
+    word = LowerCase(word);   // make the term all lowercase letters
+    def = LowerCase(def);   // make the definition all lowercase letters
+
     // create new memory
-    Node *temp = new Node(word); // Node *temp = new Node(word, def);
+    Node *temp = new Node(word, def);
 
     // if list is empty hook in new Node
     if (Start == NULL)
@@ -126,6 +128,14 @@ public:
 
     return temp;
   }
+
+  void Search(){
+
+  }
+  void print(){}
+  void search(string input){}
+  void printTenWords(){}
+  int getTermsFound(){}
 
   void ReOrder()
   {
