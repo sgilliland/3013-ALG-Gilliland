@@ -27,10 +27,12 @@ Node
 struct Node
 {
   string term;
+  //string def;			//holds definition of term
   Node *Next;
-  Node(string w)
+  Node(string w) //Node(string w, string d)
   {
     term = w;
+    //def = d;
     Next = NULL;
   }
 };
@@ -63,12 +65,13 @@ public:
     //cout<<
   }
 
-  void Add(string word)
+  void Add(string word, string def)
   {
 
     word = LowerCase(word);
+    //def = LowerCase(def);
     // create new memory
-    Node *temp = new Node(word);
+    Node *temp = new Node(word); // Node *temp = new Node(word, def);
 
     // if list is empty hook in new Node
     if (Start == NULL)
@@ -178,19 +181,6 @@ public:
 
       Min->Next = NULL;
       i++;
-
-      // if(i>=6){
-      //   break;
-      // }
-      // adding one word to new list
-
-      // Node* Temptemptmemp = NewList;
-
-      // while(Temptemptmemp){
-      //   cout<<Temptemptmemp->word<<" ";
-      //   Temptemptmemp = Temptemptmemp->Next;
-      // }
-      // cout<<endl;
     }
 
     Start = NewList;
