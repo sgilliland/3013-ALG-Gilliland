@@ -41,21 +41,8 @@ class Dictionary
         Node *front;
         Node *end;
         int totalTerms;
-        vector<string> substrings;
- 
+        vector<string> substrings;          // 
 
-        // Method to make a string all lowercase letters
-        string LowerCase(string input)
-        {
-            for (int i = 0; i < input.length(); i++)
-            {
-                if ((int)input[i] < 96)
-                {
-                    input[i] += 32;
-                }
-            }
-            return input;
-        }
 
     public:
         // Default Constructor
@@ -69,31 +56,21 @@ class Dictionary
         // Adds the node to the linked list
         void Add(string word, string def)
         {
-            word = LowerCase(word);   // make the term all lowercase letters
-            def = LowerCase(def);   // make the definition all lowercase letters
-
             // create new memory
             Node *temp = new Node(word, def);
 
             // if list is empty hook in new Node
             if (front == NULL)
             {
-                front = temp;
-                end = temp;
+                front = end = temp;
+                temp = NULL;
             }
             else
             {
                 // get ready to walk the list
-                Node *traverse = front;
-                while (traverse->Next != NULL)
-                {
-                    // walks the list
-
-                    traverse = traverse->Next;
-                }
-                // now at proper place to link in new memory
-                traverse->Next = temp;
+                end->Next = temp;
                 end = temp;
+                temp = NULL;
             }
         }
 
@@ -105,7 +82,7 @@ class Dictionary
             int index = 0;              // index for substring vector
 
             // Search through whole json dictionary file
-            while (Temp != end)
+            while (Temp != NULL)
             {
                 // suggestion takes value of the term we are looking at
                 suggestion = Temp->term;
@@ -113,7 +90,7 @@ class Dictionary
                 // use .substr() to get substrings of suggestion
                 // save substring as suggestionSub
                 suggestionSub = suggestion.substr(0, someWord.length());
-
+                
                 // if someWord is a substring of suggestion, place in substrings vector
                 if (someWord == suggestionSub && index < 10)
                 {

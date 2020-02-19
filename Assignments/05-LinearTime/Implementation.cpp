@@ -92,11 +92,11 @@ int main()
     Searching.End();                        // end timer
     double s = Searching.Seconds();         // save number of seconds as the variable s
     
-    //numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
-    //W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+    numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
+    W.printTenWords();                     // print the first 10 matching terms (if there are 10)
     // display number of total suggestions
-    //cout << "\n\nThere were " << numSuggestions << " in total.";
-    //cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
+    cout << "\n\nThere were " << numSuggestions << " in total.";
+    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
   }
 
   system("pause");
