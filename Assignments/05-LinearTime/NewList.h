@@ -19,13 +19,15 @@ struct Node
   }
 };
 
-class NewList
+class Dictionary
 {
     private:
         Node *front;
         Node *end;
         int totalTerms;
         vector<string> substrings;
+        int subLength;
+
         // Method to make a string all lowercase letters
         string LowerCase(string input)
         {
@@ -40,13 +42,17 @@ class NewList
         }
 
     public:
-        NewList()
+        Dictionary()
         {
             front = nullptr;
             end = nullptr;
             totalTerms = 0;
+            subLength = 0;
         }
 
+        void setSubLength(int x){
+            subLength = x;
+        }
         void Add(string word, string def)
         {
             word = LowerCase(word);   // make the term all lowercase letters

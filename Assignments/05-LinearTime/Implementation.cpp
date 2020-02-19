@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "List.h"
+#include "NewList.h"
 #include "JsonFacade.hpp"       
 #include <time.h>
 #include <chrono> 
@@ -17,44 +17,48 @@ int main()
   Timer Loading;        // creating an object for the timer
   Loading.Start();      // starting timer to time the load
 
+
   // create a list to hold the dictionary in
   Dictionary *W;  
   W = new Dictionary;
 
-  // read dictionary and load the dictionary list
-  ifstream fin("test.json");      // opening json file to read from
-  string word;                    // variable to store words read from json
-  string definition;              // variable to store definitions read from json
 
-  while(fin>>word>>definition)                // while file is not empty
+  // open the Json file
+  ifstream fin("test.json");                // opening json file to read from
+  string word;                              // variable to store words read from json
+  string definition;                        // variable to store definitions read from json
+
+  // Read dictionary and load the dictionary list
+  while(fin>>word>>definition)              // while file is not empty
   {
-    W->Add(word, definition);                 // add the word to the list
+    W->Add(word, definition);               // add the word to the list
   }
 
-  // stop timer for loading - maybe display to screen to check?
-  Loading.End();                        // end timer
-  double l = Loading.Seconds();         // save seconds timed as the variable l
-  cout << l << " seconds" <<endl;       // just to test the timer
+  // stop timer for loading - display to screen to check?
+  Loading.End();                            // end timer
+  double l = Loading.Seconds();             // save seconds timed as the variable l
+  cout << l << " seconds" <<endl;           // just to test the timer
   
   cout << "To exit the program, type 9";
   
   // read typed characters and put them into a vector to read as a string
   vector<char> input;
-  char letter;                          // variable for letter read in
-  int index = 0;                        // creating an index for the vector
-  int numSuggestions = 0;               // variable for total number of suggestions
-  // string suggestion;
-  while (letter = getch() != '9')
+  char letter;                              // variable for letter read in
+  int index = 0;                            // creating an index for the vector
+  int numSuggestions = 0;                   // variable for total number of suggestions
+
+  while (letter = getch() != '9')           // program ends when user types a 9 instead of a letter
   {
-    while (letter = getch() != ' ')    // loop to read until they press space
+    while (letter = getch() != ' ')         // loop to read until they press space
     {
-    input[index] = letter;              // placing the new character in the vector
-    index++;                            // incrementing the index
+      input[index] = letter;                // placing the new character in the vector
+      index++;                              // incrementing the index
     }
+    W->setSubLength(index);
 
     // start timer for searching dictionary for suggestions
-    Timer Searching;        // creating an object for the timer
-    Searching.Start();      // starting timer to time the load
+    Timer Searching;                        // creating an object for the timer
+    Searching.Start();                      // starting timer to time the load
 
     // Begin the search
     W->Search(input);

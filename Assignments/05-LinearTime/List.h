@@ -38,7 +38,7 @@ struct Node
   }
 };
 
-class Dictionary
+class OldList
 {
 private:
   Node *front;
@@ -61,12 +61,12 @@ private:
 
 
 public:
-  Dictionary()
+  OldList()
   {
     Start = NULL;
   }
 
-  ~Dictionary()
+  ~OldList()
   {
     //cout<<
   }
