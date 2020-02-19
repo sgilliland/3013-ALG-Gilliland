@@ -1,4 +1,4 @@
-// New Linked List bc i'm going insane
+
 #pragma once
 #include <string>
 #include <iostream>
