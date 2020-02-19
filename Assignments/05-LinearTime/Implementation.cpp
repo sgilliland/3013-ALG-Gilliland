@@ -19,7 +19,7 @@ int main()
 
 
   // create a list to hold the dictionary in
-  Dictionary *W;  
+  Dictionary *W;
   W = new Dictionary;
 
 
@@ -27,6 +27,7 @@ int main()
   ifstream fin("test.json");                // opening json file to read from
   string word;                              // variable to store words read from json
   string definition;                        // variable to store definitions read from json
+
 
   // Read dictionary and load the dictionary list
   while(fin>>word>>definition)              // while file is not empty
@@ -39,7 +40,6 @@ int main()
   double l = Loading.Seconds();             // save seconds timed as the variable l
   cout << l << " seconds" <<endl;           // just to test the timer
   
-  cout << "To exit the program, type 9";
   
   // read typed characters and put them into a vector to read as a string
   string input = "";
@@ -47,31 +47,34 @@ int main()
   int index = 0;                            // creating an index for the vector
   int numSuggestions = 0;                   // variable for total number of suggestions
 
+
   while (letter = getch() != '9')           // program ends when user types a 9 instead of a letter
   {
+    cout << "Begin typing and type a space when you want suggestions.\n";
+
     while (letter = getch() != ' ')         // loop to read until they press space
     {
       input += letter;                      // placing the new character in the vector
       cout << letter;
     }
 
-    // start timer for searching dictionary for suggestions
-    Timer Searching;                        // creating an object for the timer
-    Searching.Start();                      // starting timer to time the load
 
-    // Begin the search
-    W->Search(input);
+    Timer Searching;                        // creating an object for the timer
+    Searching.Start();                      // starting timer to time loading the list
+
+
+    W->Search(input);                       // Begin the search
+
 
     // stop timer and display time taken to search
     Searching.End();                        // end timer
     double s = Searching.Seconds();         // save number of seconds as the variable s
     
-    numSuggestions = W->getTermsFound();
-
-    W->printTenWords();
+    numSuggestions = W->getTermsFound();    // save the number of matching terms as numSuggestions
+    W->printTenWords();                     // print the first 10 matching terms (if there are 10)
     // display number of total suggestions
     cout << "\n\nThere were " << numSuggestions << " in total.";
-    cout << "\nTo go again, go ahead and type your next word.";
+    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
   }
   
   // Clear memory
