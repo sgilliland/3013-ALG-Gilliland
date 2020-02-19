@@ -24,10 +24,11 @@ int main()
   // read dictionary and load the dictionary list
   ifstream fin("test.json");      // opening json file to read from
   string word;                    // variable to store words read from json
+  string definition;              // variable to store definitions read from json
 
-  while(fin>>word)                // while file is not empty
+  while(fin>>word>>definition)                // while file is not empty
   {
-    W->Add(word);                 // add the word to the list
+    W->Add(word, definition);                 // add the word to the list
   }
 
   // stop timer for loading - maybe display to screen to check?
