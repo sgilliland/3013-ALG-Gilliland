@@ -84,8 +84,7 @@ class Dictionary
             else
             {
                 // get ready to walk the list
-                Node *traverse = end;
-                /*
+                Node *traverse = front;
                 while (traverse->Next != NULL)
                 {
                     // walks the list
@@ -93,7 +92,6 @@ class Dictionary
                     traverse = traverse->Next;
                 }
                 // now at proper place to link in new memory
-                */ 
                 traverse->Next = temp;
                 end = temp;
             }
