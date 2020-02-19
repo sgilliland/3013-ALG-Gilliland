@@ -7,11 +7,11 @@ using namespace std;
 
 struct Node
 {
-  string term;          // holds term
-  string def;			//holds definition of term
-  Node *Next;           // pointer to whatever is next
+  string term;                  // holds term
+  string def;			        //holds definition of term
+  Node *Next;                   // pointer to whatever is next
   
-  Node(string w, string d) //Node(string w, string d)
+  Node(string w, string d)      //Node(string w, string d)
   {
     term = w;
     def = d;
@@ -26,7 +26,7 @@ class Dictionary
         Node *end;
         int totalTerms;
         vector<string> substrings;
-        int subLength;
+ 
 
         // Method to make a string all lowercase letters
         string LowerCase(string input)
@@ -47,12 +47,9 @@ class Dictionary
             front = nullptr;
             end = nullptr;
             totalTerms = 0;
-            subLength = 0;
+
         }
 
-        void setSubLength(int x){
-            subLength = x;
-        }
         void Add(string word, string def)
         {
             word = LowerCase(word);   // make the term all lowercase letters
@@ -82,19 +79,23 @@ class Dictionary
             }
         }
 
-        void Search(vector<char> someWord)
+        void Search(string someWord)
         {
             string suggestion;          // substring to be inserted in the vector
-            int index = 0;              // index of the vector
-            Node *Temp = front;
+            Node *Temp = front;         // temporary pointer begins pointing to front of list
+            string suggestionSub;       // string variable to hold substrings of suggestion
+            int index = 0;              // index for substring vector
 
             // Search through whole json dictionary file
-            while (Temp != end)
+            while (Temp != end->Next)
             {
                 suggestion = Temp->term;
+                // put suggestion into a vector of characters
+                suggestionSub = suggestion.substr(0, someWord.length());
+
                 // Add all things that someword's characters are substrings of
-                // if () someWord is within or equal to suggestion, put it in substrings vector
-                if (1 == 1)
+                // if () someWord is a substring of suggestion, place in substrings vector
+                if (someWord == suggestionSub)
                 {
                     substrings[index] = suggestion;       // adding the suggestion to the substring vector
                     index++;          

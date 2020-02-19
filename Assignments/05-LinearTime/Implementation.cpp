@@ -42,7 +42,7 @@ int main()
   cout << "To exit the program, type 9";
   
   // read typed characters and put them into a vector to read as a string
-  vector<char> input;
+  string input = "";
   char letter;                              // variable for letter read in
   int index = 0;                            // creating an index for the vector
   int numSuggestions = 0;                   // variable for total number of suggestions
@@ -51,10 +51,9 @@ int main()
   {
     while (letter = getch() != ' ')         // loop to read until they press space
     {
-      input[index] = letter;                // placing the new character in the vector
-      index++;                              // incrementing the index
+      input += letter;                      // placing the new character in the vector
+      cout << letter;
     }
-    W->setSubLength(index);
 
     // start timer for searching dictionary for suggestions
     Timer Searching;                        // creating an object for the timer
