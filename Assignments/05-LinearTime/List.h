@@ -1,19 +1,36 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Author:           Sarah Gilliland
+// Email:            sarah13grace@gmail.com
+// Label:            P02
+// Title:            Assignment 5 - LinearTime
+// Course:           3013
+// Semester:         Spring 2020
+//
+// Description:
+//      A linked list that reads in and holds a dictionary. It has nodes which
+//  save the term, definition, and a pointer to the next node.
+//
+/////////////////////////////////////////////////////////////////////////////////
 
-
+#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
+/*
+Node
+*/
 struct Node
 {
-  string word;
-
+  string term;
   Node *Next;
   Node(string w)
   {
-    word = w;
+    term = w;
     Next = NULL;
   }
 };
@@ -84,7 +101,7 @@ public:
     {
       Node *cptr = Start;
       Node *prev = Start;
-      while (cptr && cptr->word != key)
+      while (cptr && cptr->term != key)
       {
         prev = cptr;
         cptr = cptr->Next;
@@ -92,7 +109,7 @@ public:
       // if cptr then we found the word
       if (cptr)
       {
-        temp = cptr->word;
+        temp = cptr->term;
         prev->Next = cptr->Next;
         delete cptr;
       }
@@ -127,7 +144,7 @@ public:
       // find one minimum word in old list
       while (Ptr != NULL)
       {
-        if (Ptr->word < Min->word)
+        if (Ptr->term < Min->term)
         {
           MinPrev = Prev;
           Min = Ptr;
@@ -184,7 +201,7 @@ public:
     Node *temp = Start;
     while (temp)
     {
-      cout << temp->word;
+      cout << temp->term;
       if (temp->Next)
       {
         cout << "->";
@@ -194,33 +211,3 @@ public:
     cout << endl;
   }
 };
-/////////////////////////////////////////////////////
-
-int main()
-{
-  Dictionary *W;
-
-  W = new Dictionary;
-
-  ifstream fin("dictionary.txt");
-  string word;
-
-  // while(fin>>word){
-  //   W.Add(word);
-  // }
-
-  //W.Add("Ant");
-  W->Add("Dog");
-  //W.Add("Aaron");
-  //W.Add("Aardvark");
-  W->Add("Cow");
-  //W.Add("Rabbit");
-
-  W->Print();
-
-  W->ReOrder();
-
-  W->Print();
-
-  delete W;
-}
