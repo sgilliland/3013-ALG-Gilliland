@@ -26,4 +26,7 @@ int main(){
     key = J.getKey(index);
 
     cout<<key<<" = "<<J.getValue(key)<<endl;
+
+    system("pause");
+    return 0;
 }
