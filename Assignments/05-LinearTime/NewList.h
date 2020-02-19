@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Node
@@ -24,7 +25,7 @@ class NewList
         Node *front;
         Node *end;
         int totalTerms;
-
+        vector<string> substrings;
         // Method to make a string all lowercase letters
         string LowerCase(string input)
         {
@@ -74,22 +75,37 @@ class NewList
                 end = temp;
             }
         }
-        
-        void print()
+
+        void Search(vector<char> someWord)
         {
-            //print stuff
+            string suggestion;          // substring to be inserted in the vector
+            int index = 0;              // index of the vector
+            Node *Temp = front;
+
+            // Search through whole json dictionary file
+            while (Temp != end)
+            {
+                suggestion = Temp->term;
+                // Add all things that someword's characters are substrings of
+                // if () someWord is within or equal to suggestion, put it in substrings vector
+                if (1 == 1)
+                {
+                    substrings[index] = suggestion;       // adding the suggestion to the substring vector
+                    index++;          
+                    totalTerms++;
+                }
+                Temp = Temp->Next;
+            }
         }
-        void search(string input)
-        {
-            // some algorithm here to find subsets of input and words that input is a subset of
-        }
-        void printTenWords(string tenWords[10])
+
+        void printTenWords()
         {
             for (int i = 0; i < 10; i++)
             {
-                cout << tenWords[i];
+                cout << substrings[i];
             }
         }
+
         int getTermsFound()
         {
             return totalTerms;

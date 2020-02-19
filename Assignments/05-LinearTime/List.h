@@ -18,6 +18,7 @@
 #include <string>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -40,8 +41,11 @@ struct Node
 class Dictionary
 {
 private:
-  Node *Start;
-  
+  Node *front;
+  Node *end;
+  string firstTen[10];
+  vector<string> substrings;
+  int totalTerms;
   // Method to get rid of capital letters
   string LowerCase(string input)
   {
@@ -54,6 +58,7 @@ private:
     }
     return input;
   }
+
 
 public:
   Dictionary()
@@ -98,14 +103,14 @@ public:
   {
     string temp = "";
 
-    if (!Start)
+    if (!front)
     {
       return "";
     }
     else
     {
-      Node *cptr = Start;
-      Node *prev = Start;
+      Node *cptr = front;
+      Node *prev = front;
       while (cptr && cptr->term != key)
       {
         prev = cptr;
@@ -129,12 +134,37 @@ public:
     return temp;
   }
 
-  void Search(){
+  int Search(vector<char> someWord)
+  {
+    string suggestion;          // substring to be inserted in the vector
+    int index = 0;              // index of the vector
+    Node *Temp = front;
 
+    // Search through whole json dictionary file
+    while (Temp != end)
+    {
+      suggestion = Temp->term;
+      // Add all things that someword's characters are substrings of
+      // if () someWord is within or equal to suggestion, put it in substrings vector
+      if (1 == 1)
+      {
+        substrings[index] = suggestion;       // adding the suggestion to the substring vector
+        index++;          
+        totalTerms++;
+      }
+      Temp = Temp->Next;
+    }
   }
   void print(){}
-  void search(string input){}
-  void printTenWords(){}
+  // void search(string input){}
+  void printFirstTen()
+  {
+    for (int i = 0; i < 10; i++){
+      cout << substrings[i] << '\t';
+    }
+    cout << "\n";
+  }
+
   int getTermsFound(){}
 
   void ReOrder()
