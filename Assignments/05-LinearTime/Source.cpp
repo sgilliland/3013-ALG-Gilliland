@@ -66,16 +66,17 @@ int main()
   char letter;                              // variable for letter read in
   int numSuggestions = 0;                   // variable for total number of suggestions
 
+  cout << "\nBegin typing and suggestions may appear.\n";
   while ((letter = getch()) != '9')         // program ends when user types a 9 instead of a letter
   {
     if ((int)letter != 10)                  // if the letter is a not a space
     {
-      cout << "\nBegin typing and type a space when you want suggestions.\n";
       // Clear the screen
       for (int space = 0; space < 15; space++)
       {
         cout << '\n';
       }
+      cout << "\nBegin typing and suggestions may appear.\n";
       Stuff += letter;                    // placing the new character in the vector
       cout << Stuff << '\n';
     }
@@ -91,11 +92,11 @@ int main()
     double s = Searching.Seconds();         // save number of seconds as the variable s
     
     numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
-    W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+  
     // display number of total suggestions
-    cout << "\nThere were " << numSuggestions << " in total.";
-    cout << "\nTo end, press 9.\nTo continue, just begin typing and type a space for suggestions.\n";
-    
+    cout << "\nThere were " << numSuggestions << " words found in " << s << " seconds.\n";
+    W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+    cout << "\n\nTo end, press 9. Otherwise, just continue typing.\n\n\n";
   }
   system("pause");
   return 0;
