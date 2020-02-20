@@ -39,9 +39,8 @@ int main()
   // create a list to hold the dictionary in
   Dictionary W;
 
-
   // open the Json file
-  JsonFacade J("dict_w_defs.json");                // create instance of json class
+  JsonFacade J("dict_w_defs.json");         // create instance of json class
 
   string word;                              // variable to store words read from json
   string definition;                        // variable to store definitions read from json
@@ -69,15 +68,13 @@ int main()
 
   while ((letter = getch()) != '9')         // program ends when user types a 9 instead of a letter
   {
-    cout << "Begin typing and type a space when you want suggestions.\n";
-
-    Stuff += letter;                        // placing the new character in the vector
-    
-    if((int)letter != 10)
+    if ((int)letter != 10)
     {
-      cout << Stuff << '\n';
+        cout << "Begin typing and type a space when you want suggestions.\n";
+        Stuff += letter;                    // placing the new character in the vector
+        cout << Stuff << '\n';
     }
-
+    
     Timer Searching;                        // creating an object for the timer
     Searching.Start();                      // starting timer to time loading the list
 
