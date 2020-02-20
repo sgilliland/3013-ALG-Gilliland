@@ -74,9 +74,7 @@ int main()
         Stuff += letter;                    // placing the new character in the vector
         cout << Stuff << '\n';
     }
-    else{
-      // Stuff = "";
-    }
+
     Timer Searching;                        // creating an object for the timer
     Searching.Start();                      // starting timer to time loading the list
 
@@ -92,7 +90,7 @@ int main()
     // display number of total suggestions
     cout << "\n\nThere were " << numSuggestions << " in total.";
     cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
-
+  
   }
   system("pause");
   return 0;
