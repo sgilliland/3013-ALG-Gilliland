@@ -1,24 +1,23 @@
 ///////////////////////////////////////////////////////////////////////////////
-//                   
+//
 // Author:           Sarah Gilliland
 // Email:            sarah13grace@gmail.com
 // Label:            P02
-// Title:            05-LinearTime
-// Course:           CMPS 301
-// Semester:         (semester and year)
-// Title:            List.h
+// Title:            A05-LinearTime
+// Course:           3013
+// Semester:         Spring 2020
+// File Name:        Source.cpp
 //
 // Description:
-//          This class is a linked list. It reads in words and their
-//          corresponding definitions and stores them as nodes.
+//  This main function implements a list class called Dictionary. Main will
+//  prompt the user to type a few characters and send this new string to the
+//  class to find. The class finds other strings stored in Dictionary which
+//  contain the passed string. Main calls methods to display these, as well as
+//  timing how long it took to search and store information.
 //
-// Usage:
-//
-//      
-//
-// Files:           
-//      None?
-/////////////////////////////////////////////////////////////////////////////////#include <iostream>
+/////////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
 #include <string>
 #include <fstream>
 #include "List.h"

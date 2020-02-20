@@ -1,19 +1,21 @@
 ///////////////////////////////////////////////////////////////////////////////
-//                   
+//
 // Author:           Sarah Gilliland
 // Email:            sarah13grace@gmail.com
-// Title:            List.h
+// Label:            P02
+// Title:            A05-LinearTime
+// Course:           3013
+// Semester:         Spring 2020
+// File Name:        List.h
 //
 // Description:
-//          This class is a linked list. It reads in words and their
-//          corresponding definitions and stores them as nodes.
+//  This class is a linked list. It reads in words and their corresponding 
+//  definitions from a json file and stores them as nodes. Strings containing
+//  some combinations of characters are passed in and a search method goes 
+// through to put all strings which contain the passed in string as a
+// substring. The class also has functions to print the first ten resulting
+// strings (if there are ten) as well as the number of total matches.
 //
-// Usage:
-//
-//      
-//
-// Files:           
-//      None?
 /////////////////////////////////////////////////////////////////////////////////
 #pragma once
 #include <string>
@@ -35,13 +37,43 @@ struct Node
   }
 };
 
+/**
+ * ListDictionary
+ * 
+ * Description:
+ *      A linked list that holds a dictionary and 
+ * 		can search for substrings of chars
+ * 
+ * Public Methods:
+ *      						ListDictionary() 
+ *      void 					insert(string W, string D)
+ *      void 					print()
+ *		void 					search(string input) 
+ * 		void 					printTenWords()
+ * 		int 					getTermsFound()
+ * 
+ * Private Methods:
+ *      Node* 					Head;
+ *		Node* 					Tail;	
+ *		int 					length;
+ *		string 					TenWords[10];
+ *		int 					TermsFound;
+ * 
+ * Usage: 
+ *      Dictionary W;                          // create an instance of the class
+ *      W.Add(word, definition);               // add the word to the list
+ *      W.Search(Stuff);                       // Begin the search
+ *      numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
+ *      W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+ *      
+ */
 class Dictionary
 {
     private:
         Node *front;
         Node *end;
         int totalTerms;
-        vector<string> substrings;          // 
+        vector<string> substrings;          // vector to hold the 
 
 
     public:
