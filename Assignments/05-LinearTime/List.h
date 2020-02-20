@@ -112,7 +112,7 @@ class Dictionary
             }
         }
         
-   /* void Search(string input)
+    void Search(string input)
 	{
 		int timeSeen = 0;
 		Node* temp = new Node;	
@@ -137,10 +137,10 @@ class Dictionary
 		}
 		totalTerms = timeSeen; 
 		temp = nullptr;
-	}*/
+	}
 
     
-        void Search(string someWord)
+      /*  void Search(string someWord)
         {
             string suggestion;          // substring to be inserted in the vector
             Node *Temp = new Node;
@@ -167,7 +167,7 @@ class Dictionary
                 }
                 Temp = Temp->Next;                        // move to the next node
             }
-        }
+        }*/
 
         // Prints the first 10 terms of the vector if there are 10 or more
         // or prints all terms if there are less than 10 terms

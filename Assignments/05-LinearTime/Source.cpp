@@ -68,13 +68,15 @@ int main()
 
   while ((letter = getch()) != '9')         // program ends when user types a 9 instead of a letter
   {
-    if ((int)letter != 10)
+    if ((int)letter != 10)                  // if the letter is a not a space
     {
         cout << "Begin typing and type a space when you want suggestions.\n";
         Stuff += letter;                    // placing the new character in the vector
         cout << Stuff << '\n';
     }
-    
+    else{
+      // Stuff = "";
+    }
     Timer Searching;                        // creating an object for the timer
     Searching.Start();                      // starting timer to time loading the list
 
