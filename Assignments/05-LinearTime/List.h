@@ -112,62 +112,32 @@ class Dictionary
             }
         }
         
-    void Search(string input)
-	{
-		int seen = 0;
-		Node* temp = new Node;	
-		temp = front;
-		int i = 0;
+        void Search(string input)
+	    {
+            int seen = 0;
+            Node* temp = new Node;	
+            temp = front;
+            int i = 0;
 
-		while (temp != nullptr)
-		{
-			string check = temp->term;
-			size_t found = check.find(input);
-
-			if (found != string::npos)
-			{
-				if(i < 10)
-				{
-					substrings.push_back(temp->term);
-					i++;
-                }
-				seen++;
-			}
-			temp = temp->Next;
-		}
-		totalTerms = seen; 
-		temp = nullptr;
-	}
-
-    
-      /*  void Search(string someWord)
-        {
-            string suggestion;          // substring to be inserted in the vector
-            Node *Temp = new Node;
-            Temp = front;               // temporary pointer begins pointing to front of list
-            string suggestionSub;       // string variable to hold substrings of suggestion
-            int index = 0;              // index for substring vector
-
-            // Search through whole json dictionary file
-            while (Temp != NULL)
+            while (temp != nullptr)
             {
-                // suggestion takes value of the term we are looking at
-                suggestion = Temp->term;
-                
-                // use .substr() to get substrings of suggestion
-                // save substring as suggestionSub
-                suggestionSub = suggestion.substr(0, someWord.length());
-                
-                // if someWord is a substring of suggestion, place in substrings vector
-                if (someWord == suggestionSub && index < 10)
+                string check = temp->term;
+                size_t found = check.find(input);
+
+                if (found != string::npos)
                 {
-                    substrings.push_back(suggestion);     // adding the suggestion to the substring vector
-                    index++;                              // increment index for substrings vector
-                    totalTerms++;                         // increment total number of matching terms
+                    if(i < 10)
+                    {
+                        substrings.push_back(temp->term);
+                        i++;
+                    }
+                    seen++;
                 }
-                Temp = Temp->Next;                        // move to the next node
+                temp = temp->Next;
             }
-        }*/
+            totalTerms = seen; 
+            temp = nullptr;
+        }
 
         // Prints the first 10 terms of the vector if there are 10 or more
         // or prints all terms if there are less than 10 terms
