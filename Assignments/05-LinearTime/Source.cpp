@@ -84,7 +84,7 @@ int main()
     Searching.Start();                      // starting timer to time loading the list
 
 
-    W.Search(Stuff);                       // Begin the search
+    // W.Search(Stuff);                       // Begin the search
 
 
     // stop timer and display time taken to search
@@ -96,8 +96,8 @@ int main()
     // display number of total suggestions
     cout << "\n\nThere were " << numSuggestions << " in total.";
     cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
-  }
 
+  }
   system("pause");
   return 0;
 }
