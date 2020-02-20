@@ -41,7 +41,7 @@ int main()
 
 
   // open the Json file
-  JsonFacade J("test.json");                // create instance of json class
+  JsonFacade J("dict_w_defs.json");                // create instance of json class
 
   string word;                              // variable to store words read from json
   string definition;                        // variable to store definitions read from json
