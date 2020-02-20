@@ -70,9 +70,14 @@ int main()
   {
     if ((int)letter != 10)                  // if the letter is a not a space
     {
-        cout << "Begin typing and type a space when you want suggestions.\n";
-        Stuff += letter;                    // placing the new character in the vector
-        cout << Stuff << '\n';
+      cout << "\nBegin typing and type a space when you want suggestions.\n";
+      // Clear the screen
+      for (int space = 0; space < 15; space++)
+      {
+        cout << '\n';
+      }
+      Stuff += letter;                    // placing the new character in the vector
+      cout << Stuff << '\n';
     }
 
     Timer Searching;                        // creating an object for the timer
@@ -89,12 +94,8 @@ int main()
     W.printTenWords();                     // print the first 10 matching terms (if there are 10)
     // display number of total suggestions
     cout << "\nThere were " << numSuggestions << " in total.";
-    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.";
-    // Clear the screen
-    for (int space = 0; space < 15; space++)
-    {
-      cout << '\n';
-    }
+    cout << "\nTo end, press 9.\nTo continue, just begin typing and type a space for suggestions.\n";
+    
   }
   system("pause");
   return 0;
