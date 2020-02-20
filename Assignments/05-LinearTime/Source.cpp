@@ -88,9 +88,13 @@ int main()
     numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
     W.printTenWords();                     // print the first 10 matching terms (if there are 10)
     // display number of total suggestions
-    cout << "\n\nThere were " << numSuggestions << " in total.";
-    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.\n";
-  
+    cout << "\nThere were " << numSuggestions << " in total.";
+    cout << "\nTo end, press 9. To continue, just begin typing and type a space for suggestions.";
+    // Clear the screen
+    for (int space = 0; space < 15; space++)
+    {
+      cout << '\n';
+    }
   }
   system("pause");
   return 0;
