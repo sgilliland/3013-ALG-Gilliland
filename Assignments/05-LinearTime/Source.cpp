@@ -67,25 +67,22 @@ int main()
   char letter;                              // variable for letter read in
   int numSuggestions = 0;                   // variable for total number of suggestions
 
-
-  while ((letter = getch()) != '9')           // program ends when user types a 9 instead of a letter
+  while ((letter = getch()) != '9')         // program ends when user types a 9 instead of a letter
   {
     cout << "Begin typing and type a space when you want suggestions.\n";
 
-    Stuff += letter;                      // placing the new character in the vector
+    Stuff += letter;                        // placing the new character in the vector
     
     if((int)letter != 10)
     {
       cout << Stuff << '\n';
     }
 
-
     Timer Searching;                        // creating an object for the timer
     Searching.Start();                      // starting timer to time loading the list
 
 
-    // W.Search(Stuff);                       // Begin the search
-
+    W.Search(Stuff);                       // Begin the search
 
     // stop timer and display time taken to search
     Searching.End();                        // end timer

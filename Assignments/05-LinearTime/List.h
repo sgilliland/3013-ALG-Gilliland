@@ -11,7 +11,7 @@
 // Description:
 //  This class is a linked list. It reads in words and their corresponding 
 //  definitions from a json file and stores them as nodes. Strings containing
-//  some combinations of characters are passed in and a search method goes 
+//  some combinations of characters are passed in and a search method goes
 // through to put all strings which contain the passed in string as a
 // substring. The class also has functions to print the first ten resulting
 // strings (if there are ten) as well as the number of total matches.
@@ -29,6 +29,12 @@ struct Node
   string def;			        //holds definition of term
   Node *Next;                   // pointer to whatever is next
   
+  Node()      //Node()
+  {
+    term = "";
+    def = "";
+    Next = NULL;
+  }
   Node(string w, string d)      //Node(string w, string d)
   {
     term = w;
@@ -105,7 +111,35 @@ class Dictionary
                 temp = NULL;
             }
         }
+        
+    void Search(string input)
+	{
+		int timeSeen = 0;
+		Node* temp = new Node;	
+		temp = front;
+		int i = 0;
 
+		while (temp != nullptr)
+		{
+			string check = temp->term;
+			size_t found = check.find(input);
+
+			if (found != string::npos)
+			{
+				if(i < 10)
+				{
+					substrings.push_back(temp->term);
+					i++;
+                }
+				timeSeen++;
+			}
+			temp = temp->Next;
+		}
+		totalTerms = timeSeen; 
+		temp = nullptr;
+	}
+
+        /*
         void Search(string someWord)
         {
             string suggestion;          // substring to be inserted in the vector
@@ -117,7 +151,7 @@ class Dictionary
             while (Temp != NULL)
             {
                 // suggestion takes value of the term we are looking at
-                suggestion = Temp->term;
+                suggestion.push_back(Temp->term);
                 
                 // use .substr() to get substrings of suggestion
                 // save substring as suggestionSub
@@ -132,7 +166,7 @@ class Dictionary
                 }
                 Temp = Temp->Next;                        // move to the next node
             }
-        }
+        }*/
 
         // Prints the first 10 terms of the vector if there are 10 or more
         // or prints all terms if there are less than 10 terms
