@@ -112,7 +112,7 @@ class Dictionary
             }
         }
         
-    void Search(string input)
+   /* void Search(string input)
 	{
 		int timeSeen = 0;
 		Node* temp = new Node;	
@@ -137,13 +137,14 @@ class Dictionary
 		}
 		totalTerms = timeSeen; 
 		temp = nullptr;
-	}
+	}*/
 
-        /*
+    
         void Search(string someWord)
         {
             string suggestion;          // substring to be inserted in the vector
-            Node *Temp = front;         // temporary pointer begins pointing to front of list
+            Node *Temp = new Node;
+            Temp = front;               // temporary pointer begins pointing to front of list
             string suggestionSub;       // string variable to hold substrings of suggestion
             int index = 0;              // index for substring vector
 
@@ -151,7 +152,7 @@ class Dictionary
             while (Temp != NULL)
             {
                 // suggestion takes value of the term we are looking at
-                suggestion.push_back(Temp->term);
+                suggestion = Temp->term;
                 
                 // use .substr() to get substrings of suggestion
                 // save substring as suggestionSub
@@ -160,13 +161,13 @@ class Dictionary
                 // if someWord is a substring of suggestion, place in substrings vector
                 if (someWord == suggestionSub && index < 10)
                 {
-                    substrings[index] = suggestion;       // adding the suggestion to the substring vector
+                    substrings.push_back(suggestion);     // adding the suggestion to the substring vector
                     index++;                              // increment index for substrings vector
                     totalTerms++;                         // increment total number of matching terms
                 }
                 Temp = Temp->Next;                        // move to the next node
             }
-        }*/
+        }
 
         // Prints the first 10 terms of the vector if there are 10 or more
         // or prints all terms if there are less than 10 terms
