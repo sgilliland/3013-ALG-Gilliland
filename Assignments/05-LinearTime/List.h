@@ -114,7 +114,7 @@ class Dictionary
         
     void Search(string input)
 	{
-		int timeSeen = 0;
+		int seen = 0;
 		Node* temp = new Node;	
 		temp = front;
 		int i = 0;
@@ -131,11 +131,11 @@ class Dictionary
 					substrings.push_back(temp->term);
 					i++;
                 }
-				timeSeen++;
+				seen++;
 			}
 			temp = temp->Next;
 		}
-		totalTerms = timeSeen; 
+		totalTerms = seen; 
 		temp = nullptr;
 	}
 
