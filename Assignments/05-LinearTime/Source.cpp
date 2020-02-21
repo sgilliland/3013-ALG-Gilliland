@@ -72,7 +72,7 @@ int main()
       // Clear the screen for formatting
       for (int space = 0; space < 15; space++)
       {
-        cout << '\n\n';   
+        cout << "\n\n";   
       }
 
       cout << "\nBegin typing and suggestions may appear.\n";
