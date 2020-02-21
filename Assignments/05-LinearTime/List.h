@@ -189,8 +189,7 @@ public:
 
         for (int i = 0; i < 10; i++)
         {
-            // erase the 6th element
-            // substrings.erase(substrings.begin()+i);
+            // remove contents of the vector
             substrings.pop_back();
         }
     }
