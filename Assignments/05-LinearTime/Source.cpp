@@ -31,71 +31,71 @@ using namespace std;
 
 int main()
 {
+
   // Start the timer to time loading process
-  Timer Loading;        // creating an object for the timer
-  Loading.Start();      // starting timer to time the load
+  Timer Loading;   // creating an object for the timer
+  Loading.Start(); // starting timer to time the load
 
 
   // create a list to hold the dictionary in
   Dictionary W;
 
   // open the Json file
-  JsonFacade J("dict_w_defs.json");         // create instance of json class
-
-  string word;                              // variable to store words read from json
-  string definition;                        // variable to store definitions read from json
-
+  JsonFacade J("dict_w_defs.json");
 
   // Read dictionary and load the dictionary list
   string key;
   vector<string> keys = J.getKeys();
-  for (int i = 0; i < keys.size(); i++)     // while file is not empty
+  for (int i = 0; i < keys.size(); i++)   // while file is not empty
   {
-    word = J.getKey(i);
-    definition = J.getValue(word);
-    W.Add(word, definition);               // add the word to the list
+    string word = J.getKey(i);            // word will store terms from json
+    string definition = J.getValue(word); // definition will store definitions from json
+    W.Add(word, definition);              // add the word and definition to the list
   }
 
-  // stop timer for loading - display to screen to check?
-  Loading.End();                            // end timer
-  double l = Loading.Seconds();             // save seconds timed as the variable l
-  
-  
-  // read typed characters and put them into a vector to read as a string
-  string Stuff = "";
-  char letter;                              // variable for letter read in
-  int numSuggestions = 0;                   // variable for total number of suggestions
 
-  cout << "\nBegin typing and suggestions may appear.\n";
-  while ((letter = getch()) != '9')         // program ends when user types a 9 instead of a letter
+  Loading.End();                // stop timer for loading
+  double l = Loading.Seconds(); // save seconds timed as the variable l
+
+  
+  string Stuff = "";      // Stuff holds the string of characters read in
+  char letter;            // variable for char read in
+  int numSuggestions = 0; // variable for total number of suggestions
+
+  // read typed characters and put them into a vector to read as a string
+  cout << "\nBegin typing and suggestions may appear.\n\n";
+  
+  while ((letter = getch()) != '9') // program ends when user types a 9 instead of a letter
   {
-    if ((int)letter != 10)                  // if the letter is a not a space
+    if ((int)letter != 10) // if the letter is a not a space
     {
-      // Clear the screen
+      // Clear the screen for formatting
       for (int space = 0; space < 15; space++)
       {
-        cout << '\n';
+        cout << '\n';   
       }
+
       cout << "\nBegin typing and suggestions may appear.\n";
-      Stuff += letter;                    // placing the new character in the vector
+
+      Stuff += letter; // placing the new character in the vector
       cout << Stuff << '\n';
     }
 
-    Timer Searching;                        // creating an object for the timer
-    Searching.Start();                      // starting timer to time loading the list
 
+    Timer Searching;   // creating an object for the timer
+    Searching.Start(); // starting timer to time loading the list
 
-    W.Search(Stuff);                       // Begin the search
+    W.Search(Stuff); // Begin the search
 
     // stop timer and display time taken to search
-    Searching.End();                        // end timer
-    double s = Searching.Seconds();         // save number of seconds as the variable s
-    
-    numSuggestions = W.getTermsFound();    // save the number of matching terms as numSuggestions
-  
+    Searching.End();                // end timer
+    double s = Searching.Seconds(); // save number of seconds as the variable s
+
+    numSuggestions = W.getTermsFound(); // save the number of matching terms as numSuggestions
+
     // display number of total suggestions
     cout << "\nThere were " << numSuggestions << " words found in " << s << " seconds.\n";
-    W.printTenWords();                     // print the first 10 matching terms (if there are 10)
+    W.printTenWords(); // print the first 10 matching terms (if there are 10)
     cout << "\n\nTo end, press 9. Otherwise, just continue typing.\n\n\n";
   }
   system("pause");
