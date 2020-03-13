@@ -6,13 +6,13 @@
 
 
 - Complexities : **O(1), O(n log n), O(n), O(n<sup>2</sup>), O(log n), O(n!) , O(h)**
-1.Finding the max element in an unordered stack would require ___ **O(n)**_____ operations?
-2. Finding the min element in an unordered queue would require ____ **O(n)**______ operations?
-3. Finding some element in some Binary Search Tree would require ____ **O(h)**______ operations?
+1.Finding the max element in an unordered stack would require ___ **O(n)**____ operations?
+2. Finding the min element in an unordered queue would require ____ **O(n)**_____ operations?
+3. Finding some element in some Binary Search Tree would require ____ **O(h)**_____ operations?
 4. Finding some element in a balanced Binary Search Tree would require _____ **O(log(n))**____ operations?
-5. Finding some element in an ordered linked list would require ____ **O(n)**______ operations (worst case)?
-6. Finding some element in an ordered linked list would require ____ **O(n/2)**_____ operations (average case)?
-7. Finding some element in an unordered linked list would require ____ **O(n)**_____ operations (worst case)?
+5. Finding some element in an ordered linked list would require ____ **O(n)**_____ operations (worst case)?
+6. Finding some element in an ordered linked list would require ____ **O(n/2)**____ operations (average case)?
+7. Finding some element in an unordered linked list would require ____ **O(n)**____ operations (worst case)?
 
 
 8. For each of the following, count the number of operations where some_statement is executed based on the loops
