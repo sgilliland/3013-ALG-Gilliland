@@ -2,11 +2,12 @@
 #### Due: 03-13-2020 (Friday @ 3:30 p.m.)
 
 - Given a collection of algorithms that runs on **O(1), O(n log n), O(n), O(n<sup>2</sup>), O(log n), O(n!)**, order the algorithms from fastest to slowest. **O(1), O(log n), O(n), O(n log n), O(n<sup>2</sup>), O(n!)**
-- Suppose that the complexity of an algorithm is O(n<sup>2</sup>). Suppose that the program that uses the algorithm run in 10 seconds for a data set of size n. If the data size is doubled, how long will it take (approximately) to run the program? **Approximately 14.14 seconds**
+- Suppose that the complexity of an algorithm is O(n<sup>2</sup>). Suppose that the program that uses the algorithm run in 10 seconds for a data set of size n. If the data size is doubled, how long will it take (approximately) to run the program? **40 seconds**
 
 
 - Complexities : **O(1), O(n log n), O(n), O(n<sup>2</sup>), O(log n), O(n!) , O(h)**
-1.Finding the max element in an unordered stack would require ___ **O(n)**____ operations?
+
+1. Finding the max element in an unordered stack would require ___ **O(n)**____ operations?
 2. Finding the min element in an unordered queue would require ____ **O(n)**_____ operations?
 3. Finding some element in some Binary Search Tree would require ____ **O(h)**_____ operations?
 4. Finding some element in a balanced Binary Search Tree would require _____ **O(log(n))**____ operations?
@@ -17,24 +18,23 @@
 
 8. For each of the following, count the number of operations where some_statement is executed based on the loops
 
-   **O(n<sup>2</sup>)**
+**O(n<sup>2</sup>)**
 ```cpp
 //A
 for (int I = 0; I < n; I++)
     for (int j = 1; j < n; j++)
         {some_statement;}
 ```
-   **O(n<sup>2</sup>/2)**
 
-
+**O(n<sup>2</sup>/2)**
 ```cpp
 //B
 for (int I = 0; I < n; I +=2)
     for (int j = 1; j < n; j++)
         {some_statement;}
 ```
-   **O(nlog(n))**
 
+**O(nlog(n))**
 
 ```cpp
 //C
@@ -46,7 +46,7 @@ for (int j = 1 ; j < n ; j *= 2)
 
 
 At most, how many comparisons are required to search a sorted vector of 1023 elements using the binary
-search algorithm? **About 10**
+search algorithm? **10 comparisons**
 
 In each of the following examples, please choose the best data structure(s).
 - Options are: **Array, Linked Lists, Stack, Queues, Trees, Graphs, Sets, Hash Tables**. 
