@@ -63,21 +63,3 @@ In each of the following examples, please choose the best data structure(s).
 10. To store the customer order information in a drive-in burger place. (Customers keep on coming and they have to get their correct food at the payment/food collection window.) **Queue**
 11. To store the genealogy information of biological species. **Tree**
 12. To store an alphabetized list of names in order to look up quickly. **Hash Table**
-
-
-## Deliverables
-
-- Edit this file and add your answers using markdown!
-- Create a folder called `H03` in your assignments folder.
-- Put a copy of your markdown file in this folder, and call it README.md.
-- Upload to github sometime close to the due date.
-- Print out your banner ON ITS OWN PAGE
-
-```
-H03
-3013
-LASTNAME
-```
-
-- Print out a hard copy of the file as well. Do not print directly from github. Either use `gitprint` or make it a pdf and print it.
-- Make sure you answer thoroughly using complexities where appropriate and/or explaining your choices etc.
