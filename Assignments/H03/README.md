@@ -17,6 +17,7 @@
 
 8. For each of the following, count the number of operations where some_statement is executed based on the loops
 
+   **O(n<sup>2</sup>)**
 ```cpp
 //A
 for (int I = 0; I < n; I++)
@@ -41,7 +42,7 @@ for (int j = 1 ; j < n ; j *= 2)
     for (int I = 1; i<n; i++)
         {some_statement;} 
 ```
-   **O(n<sup>2</sup>)**
+
 
 
 At most, how many comparisons are required to search a sorted vector of 1023 elements using the binary
