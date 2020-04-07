@@ -10,5 +10,5 @@
 |   H02   | [07-Heapify](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/Homework) | Assignment for fixing a heap written in class |
 |   H03   | [09-Data Structures & Complexity](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/H03) | Assignment for ensuring knowledge from Test 1 |
 |   A03   | [10-uVJudge Upload](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/11172) | Assignment for uploading to uVJudge |
-|   P04   | [11-Graph Connectivity](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/README.md) | Assignment for processing a graph |
-|   P05   | [12-STL Maps](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/README.md) | Assignment for using a map |
+|   P04   | [11-Graph Connectivity](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/459) | Assignment for processing a graph |
+|   P05   | [12-STL Maps](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/484) | Assignment for using a map |
