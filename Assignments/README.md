@@ -12,3 +12,5 @@
 |   A03   | [10-uVJudge Upload](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/11172) | Assignment for uploading to uVJudge |
 |   P04   | [11-Graph Connectivity](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/459) | Assignment for processing a graph |
 |   P05   | [12-STL Maps](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/484) | Assignment for using a map |
+|   P06   | [13-Spanning Trees](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/11597) | Assignment for finding max subtrees |
+|   P07   | [14-Shortest Path](https://github.com/sgilliland/3013-ALG-Gilliland/tree/master/Assignments/1112) | Assignment for finding the shortest path |
