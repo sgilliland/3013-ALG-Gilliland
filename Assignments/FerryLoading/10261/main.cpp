@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-//
+// (INCOMPLETE)
 // Author:           Sarah Gilliland
 // Email:            sarah13grace@gmail.com
 // Label:            10261
@@ -9,11 +9,12 @@
 // File Name:        main.cpp
 //
 // Description:
-//  This program reads in information about a ferry which transports up to a
-//  certain amount of cars in a certain amount of time. The program uses a
-//  and arrays to keep track of which side a car is on, when it arrived, and
-//  when it reached the other side - all while maintaining the original order
-//  from the input.
+//  This program reads in information about ferries which transports up to a
+//  certain amount of cars in a certain amount of time. All cars are a different
+//  size, so this impacts which ferry the car should board. The program uses a
+//  queue and arrays to keep track of car sizes, when it arrived, and
+//  which cars are on which ferries to maximize effeciency - all while 
+//  maintaining the original order from the input.
 //
 /////////////////////////////////////////////////////////////////////////////////
 
