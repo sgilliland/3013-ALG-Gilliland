@@ -127,7 +127,10 @@ int main()
         delete[] order;
         delete[] Result;
 
-        cout << '\n';
+        // For formatting on UVA
+        if (cases < C-1)
+          cout << '\n';
+        
         cases++;
     }
     return 0;
