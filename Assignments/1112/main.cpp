@@ -1,7 +1,23 @@
-// Sarah Gilliland (received help from David Hawkins & Dr. Griffin)
+///////////////////////////////////////////////////////////////////////////////
+//
+// Author:           Sarah Gilliland (with help from David Hawkins & Dr. Griffin)
+// Email:            sarah13grace@gmail.com
+// Label:            1112
+// Title:            Mice & Maze
+// Course:           3013
+// Semester:         Spring 2020
+// File Name:        main.cpp
+//
+// Description:
+//  This program reads in information about a maze. The maze consists of cells
+//  (which each contain a mouse) and connections (which each take a certain
+//  amount of time). The program uses Dijkstra's greedy algorithm to find the
+//  shortest path between connections. This allows the program to predict the
+//  number of mice who will make it to the exit cell in a given amount of time.
+//  The program uses an adjacency matrix to represent the graph.
+// 
+/////////////////////////////////////////////////////////////////////////////////
 
-// A C++ program for Dijkstra's single source shortest path algorithm.
-// The program is for adjacency matrix representation of the graph
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -12,7 +28,7 @@ using namespace std;
 // the set of vertices not yet included in shortest path tree
 int minDistance(int dist[], bool shortest[], int N)
 {
-    // Initialize min values
+    // initialize min values
     int min = INT_MAX;
     int index;
 
@@ -28,27 +44,27 @@ int minDistance(int dist[], bool shortest[], int N)
     return index;
 }
 
-// Function that implements Dijkstra's single source shortest path algorithm
+// function that implements Dijkstra's single source shortest path algorithm
 // for a graph represented using adjacency matrix representation
 void dijkstra(int **graph, int exit, int N, int *dist)
 {
     bool shortest[N]; // bool array for if cell is in shortest path
 
-    for (int i = 0; i < N; i++) // Set all distances to INT_MAX and shortest[] to false
+    for (int i = 0; i < N; i++) // set all distances to INT_MAX and shortest[] to false
     {
         dist[i] = INT_MAX;
         shortest[i] = false;
     }
 
-    dist[exit] = 0; // Distance of exit cell from itself is always 0
+    dist[exit] = 0; // distance of exit cell from itself is always 0
 
-    for (int j = 0; j < N - 1; j++) // Find shortest path for all cells
+    for (int j = 0; j < N - 1; j++) // find shortest path for all cells
     {
 
         int u = minDistance(dist, shortest, N); // u is min distance and in shortest path
         shortest[u] = true;
 
-        for (int v = 0; v < N; v++) // Update dist value
+        for (int v = 0; v < N; v++) // update dist[v] value
         {
             // if dist[u] is not in shortest, there is an edge from u to v, and total time
             // of path from exit to v through u is smaller than current value of dist[v]
@@ -61,7 +77,7 @@ void dijkstra(int **graph, int exit, int N, int *dist)
     }
 }
 
-// Function to create the 2D array for the maze
+// function to create the 2D array for the maze
 int **Make2dArray(int width, int height)
 {
     int **newMaze;
@@ -75,6 +91,8 @@ int **Make2dArray(int width, int height)
     return newMaze;
 }
 
+// function to calculate and display the 
+// number of mice who will make it out of the maze
 void display(int *otherDist, int V, int T)
 {
     int numMice = 0;
@@ -88,7 +106,7 @@ void display(int *otherDist, int V, int T)
     cout << numMice;
 }
 
-// Function to deallocate all arrays
+// function to deallocate all dynamic memory
 void clear(int **g, int *d, int *od)
 {
     delete[] g;
@@ -122,10 +140,10 @@ int main()
 
         maze = Make2dArray(N, N);
 
-        dist = new int[N]; // Allocate memory for distance arrays
+        dist = new int[N]; // allocate memory for distance arrays
         otherDist = new int[N];
 
-        for (int i = 0; i < M; i++) // Read in all connections
+        for (int i = 0; i < M; i++) // read in all connections
         {
             cin >> a >> b >> time; // a -> b with time of (int)time
             maze[a][b] = time;     // add to maze array
@@ -148,9 +166,9 @@ int main()
 
         display(otherDist, N, T); // display the result
 
-        clear(maze, dist, otherDist); // Delete the allocated memory
+        clear(maze, dist, otherDist); // delete the allocated memory
 
-        if (counter != tests - 1) // Output formatting
+        if (counter != tests - 1) // dutput formatting for UVA
         {
             cout << "\n\n";
         }
