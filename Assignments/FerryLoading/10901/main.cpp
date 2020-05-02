@@ -11,9 +11,9 @@
 // Description:
 //  This program reads in information about a ferry which transports up to a
 //  certain amount of cars in a certain amount of time. The program uses a
-//  and arrays to keep track of which side a car is on, when it arrived, and
-//  when it reached the other side - all while maintaining the original order
-//  from the input.
+//  queue and arrays to keep track of which side a car is on, when it arrived,
+//  and when it reached the other side - all while maintaining the original
+//  order from the input.
 //
 /////////////////////////////////////////////////////////////////////////////////
 
