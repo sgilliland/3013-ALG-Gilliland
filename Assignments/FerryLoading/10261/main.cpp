@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// (INCOMPLETE)
+// 
 // Author:           Sarah Gilliland
 // Email:            sarah13grace@gmail.com
 // Label:            10261
@@ -12,51 +12,29 @@
 //  This program reads in information about ferries which transports up to a
 //  certain amount of cars in a certain amount of time. All cars are a different
 //  size, so this impacts which ferry the car should board. The program uses a
-//  queue and arrays to keep track of car sizes, when it arrived, and
-//  which cars are on which ferries to maximize effeciency - all while 
-//  maintaining the original order from the input.
+//  queue and vector to keep track of car sizes and which cars are on which 
+//  side to maximize effeciency - all while maintaining the original order from 
+//  the input.
 //
 /////////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include <queue>
+#include <iostream>
 #include <string>
 
 using namespace std;
 
-// Function to fill the queue (bank) and the array (order)
-void Fill(queue<int> bank[], int *order, int arrival, string side, int m)
-{
-    // Go through the data and fill the queue and array
-    for (int i = 0; i < m; i++)
-    {
-        // Read in a new car
-        cin >> arrival >> side;
-
-        // Load the respective side of the queue with index of order array
-        if (side == "left")
-            bank[0].push(i);
-        else if (side == "right")
-            bank[1].push(i);
-
-        order[i] = arrival; // load arrival times in the order from the file
-    }
-}
-
-// Function to display the output in the correct order
-void display(int *results, int m)
-{
-    for (int i = 0; i < m; i++)
-        cout << results[i] << '\n';
-}
+// Display the number of cars loaded and their respective sides
+void Display(vector<string> side);
 
 int main()
 {
-    // Declaring variables
-    int n, t, m, arrival, C, numOnFerry, clock, newTime;
+    int ferrySize, carSize, index, C;
     int cases = 0;
-    string side;
-    bool leftOrRight; // left will be false
+    // int loaded;
+
+    // all car sizes are stored onto a queue in order of arrival
+    queue<int> waiting;
 
     cin >> C; // Read in number of cases
 
@@ -64,72 +42,99 @@ int main()
     while (cases < C)
     {
         // Read in n, t, and m
-        cin >> n >> t >> m;
+        cin >> ferrySize;
 
-        // bank holds the index of the car on the left or right side
-        queue<int> bank[2];
-        // order holds the order of the input
-        int *order;
-        order = new int[m];
-        // Begin on the left side each time
-        leftOrRight = false;
-        // Result holds the resulting time to display
-        int *Result;
-        Result = new int[m];
-        clock = 0;
+        // convert meters to centimeters
+        ferrySize *= 100;
 
-        Fill(bank, order, arrival, side, m);
+        // vector to hold the resulting sides in order
+        vector<string> side;
 
-        // while there are cars on at least one side
-        while (!bank[0].empty() || !bank[1].empty())
+        // fill queue with sizes of waiting cars
+        cin >> carSize;
+        while (carSize != 0)
         {
-            // newTime is the variable for the new time
-            newTime = 0;
-
-            if (bank[0].empty()) // Check for left side empty
-                newTime = order[bank[1].front()];
-            else if (bank[1].empty()) // Check for right side empty
-                newTime = order[bank[0].front()];
-            else // neither is empty
-            {
-                if (order[bank[0].front()] <= order[bank[1].front()]) // left arrove first
-                    newTime = order[bank[0].front()];
-                else // right arrove first
-                    newTime = order[bank[1].front()];
-            }
-
-            // if clock needs to be updated
-            if (newTime >= clock)
-                clock = newTime;
-
-            numOnFerry = 0;
-
-            // unload and reload the Ferry
-            while ((!bank[leftOrRight].empty()) && (clock >= order[bank[leftOrRight].front()]) && (numOnFerry < n))
-            {
-                // unload: store the time of unloading into Result
-                Result[bank[leftOrRight].front()] = clock + t;
-                // reload: pop from bank and increment numOnFerry
-                bank[leftOrRight].pop();
-                numOnFerry++;
-            }
-
-            clock += t; //increment clock
-
-            if (leftOrRight)         // if on right side (true)
-                leftOrRight = false; // go to left side (false)
-            else                     // if on left side (false)
-                leftOrRight = true;  // go to right side (true)
+            waiting.push(carSize);
+            cin >> carSize;
         }
 
-        display(Result, m); // display the results
+        bool canLoad = true;
 
-        // Get rid of allocated memory
-        delete[] order;
-        delete[] Result;
+        int left = 0;        // size of the line of cars on left side
+        int right = 0;       // size of the line of cars on right side
+        
+        int temp;
+        bool lastSide; // variable to keep track of last loaded side
 
-        cout << '\n';
+        // while there are cars to load and the ferry can hold more cars
+        while (!waiting.empty() && canLoad)
+        {
+            // if theres room on port side for waiting.front()
+            if (ferrySize >= (waiting.front() + left) && left >= 0)
+            {
+                side.push_back("port");  
+                left += waiting.front(); // add car size to length of left side
+                temp = waiting.front();  // let temp hold lateset carSize
+                waiting.pop();          
+                lastSide = true;         // true for left
+            }
+            // if theres room on starboard side for waiting.front()
+            else if (ferrySize >= (waiting.front() + right) && right >= 0)
+            {
+                side.push_back("starboard"); 
+                right += waiting.front();    // add car size to length of right side
+                temp = waiting.front();      // let temp hold lateset carSize
+                waiting.pop();               
+                lastSide = false;            // false for right
+            }
+            // if theres no room on either side
+            else
+                canLoad = false;
+
+            // Received help from Dakota Wilson for this if statement
+            // Checks for same-sized cars so that the ferry is balanced
+            if (temp == waiting.front() && canLoad && !waiting.empty())
+            {
+                if (!lastSide) // if last side loaded was right
+                {              // load to left side
+                    left += waiting.front();
+                    waiting.pop();
+                    side.push_back("port");
+                }
+                else if (lastSide) // if last side loaded was left
+                {                  // load to right side
+                    right += waiting.front();
+                    waiting.pop();
+                    side.push_back("starboard");
+                }
+            }
+        }
+
+        // empty the cars left in the queue
+        while (!waiting.empty())
+        {
+            waiting.pop();
+        }
+
+        // call to Display function
+        Display(side);
+
         cases++;
+
+        // for output formatting
+        if (cases != C)
+            cout << '\n';
     }
     return 0;
+}
+
+// Function to display the number of cars loaded and their respective sides
+void Display(vector<string> side)
+{
+    cout << side.size() << '\n';
+
+    for (int i = 0; i < side.size(); i++)
+    {
+        cout << side[i] << '\n';
+    }
 }
