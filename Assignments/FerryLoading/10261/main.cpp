@@ -31,7 +31,6 @@ int main()
 {
     int ferrySize, carSize, index, C;
     int cases = 0;
-    // int loaded;
 
     // all car sizes are stored onto a queue in order of arrival
     queue<int> waiting;
