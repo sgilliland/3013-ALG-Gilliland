@@ -1,4 +1,20 @@
-// Sarah Gilliland
+///////////////////////////////////////////////////////////////////////////////
+//
+// Author:           Sarah Gilliland
+// Email:            sarah13grace@gmail.com
+// Label:            484
+// Title:            The Department of Redundancy Department
+// Course:           3013
+// Semester:         Spring 2020
+// File Name:        main.cpp
+//
+// Description:
+//  This program reads in a list of integers and deletes all duplicates. To do
+//  this, the program uses creates a map of each number and it's number of
+//  occurances, as well as a vector of the "keys" or the number being searched.
+//  This program will display each number and it's number of occurances.
+// 
+/////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <map>

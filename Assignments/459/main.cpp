@@ -1,4 +1,20 @@
-// Sarah Gilliland
+///////////////////////////////////////////////////////////////////////////////
+//
+// Author:           Sarah Gilliland
+// Email:            sarah13grace@gmail.com
+// Label:            459
+// Title:            Graph Connectivity
+// Course:           3013
+// Semester:         Spring 2020
+// File Name:        main.cpp
+//
+// Description:
+//  This program reads in information about a graph and uses the DFS algorithm
+//  to determine the maximal connected subgraphs that can be created. The graph
+//  is stored using a struct and the stl list. This process is done for any number 
+//  of graphs.
+// 
+/////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <string>
